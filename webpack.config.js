@@ -2,12 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  cache: true,
-
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:3001/',
-    'webpack/hot/only-dev-server',
-    './client'
+    './example/allComponents.jsx'
   ],
 
   resolve: {
@@ -15,9 +11,8 @@ module.exports = {
   },
 
   output: {
-    path: path.join(__dirname, 'dist'),
-    publicPath: 'http://localhost:3001/',
-    filename: 'bundle.js',
+    path: path.join(__dirname, 'example'),
+    filename: 'exampleBundle.js',
     pathinfo: true
   },
 
@@ -26,12 +21,12 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loaders: ['babel?cacheDirectory&optional=runtime&stage=0'],
-        // query: {
-        //   cacheDirectory: true,
-        //   optional: ['runtime'],
-        //   stage: 0
-        // }
+        loader: 'babel',
+        query: {
+          cacheDirectory: true,
+          optional: ['runtime'],
+          stage: 0
+        }
       },
     ]
   },
@@ -51,7 +46,7 @@ module.exports = {
     quiet: false,
     noInfo: false,
     publicPath: '/',
-    contentBase: './dist/',
-    port: 3001
+    contentBase: './example/',
+    port: 3000
   }
 };
