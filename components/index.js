@@ -1,5 +1,7 @@
 export Button from './Button';
-export ProgressBar from './ProgressBar';
+export CheckButtonGroup from './CheckButtonGroup';
 export RadioButtonGroup from './RadioButtonGroup';
+export ProgressBar from './ProgressBar';
 export Switch from './Switch';
-export Tabs from './Tabs';
+export Tabs, { Tab } from './Tabs';
+export Panel from './Panel';
