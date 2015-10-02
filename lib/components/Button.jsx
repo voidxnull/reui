@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-class Button extends React.Component {
+export default class Button extends React.Component {
   static defaultProps = {
     disabled: false,
     active: false,
@@ -24,11 +24,10 @@ class Button extends React.Component {
     );
 
     return (
-      <div {...otherProps} className={className}>
+      <button {...otherProps} className={className} disabled={disabled}>
         {title}
         {children}
-      </div>);
+      </button>
+    );
   }
 }
-
-export default Button;
