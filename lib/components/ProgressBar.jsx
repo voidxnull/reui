@@ -1,9 +1,16 @@
 import React from 'react';
+import ReUIComponent from './ReUIComponent';
 
-class ProgressBar extends React.Component {
+class ProgressBar extends ReUIComponent {
   static defaultProps = {
     value: 0,
     of: 100
+  };
+
+  static classNames = {
+    progressBar: 'f-progress',
+    caption: 'f-progress__caption',
+    bar: 'f-progress__bar'
   };
 
   render() {
@@ -12,9 +19,9 @@ class ProgressBar extends React.Component {
     };
 
     return (
-      <div className="f-progress">
-        <div className="f-progress__caption">{this.props.value}/{this.props.of}</div>
-        <div className="f-progress__bar" style={style} />
+      <div className={this.state.classNames.progressBar}>
+        <div className={this.state.classNames.caption}>{this.props.value}/{this.props.of}</div>
+        <div className={this.state.classNames.bar} style={style} />
       </div>
     );
   }

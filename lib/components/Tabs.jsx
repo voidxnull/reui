@@ -11,7 +11,7 @@ export class Tabs extends React.Component {
     menuItem: 'f-tabs__menu__item',
     menuItemActive: 'f-tabs__menu__item_active',
     tab: 'f-tabs__tab'
-  }
+  };
 
   constructor(props) {
     super(props);

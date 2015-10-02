@@ -1,7 +1,8 @@
 import React from 'react';
+import ReUIComponent from './ReUIComponent';
 import classNames from 'classnames';
 
-export default class Button extends React.Component {
+export default class Button extends ReUIComponent {
   static defaultProps = {
     disabled: false,
     active: false,
@@ -18,9 +19,9 @@ export default class Button extends React.Component {
   render() {
     var { disabled, active, title, children, ...otherProps } = this.props;
     var className = classNames(
-      Button.classNames.button,
-      active && Button.classNames.active,
-      disabled && Button.classNames.disabled,
+      this.state.classNames.button,
+      active && this.state.classNames.active,
+      disabled && this.state.classNames.disabled
     );
 
     return (

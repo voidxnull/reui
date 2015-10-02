@@ -1,8 +1,9 @@
 import React from 'react';
+import ReUIComponent from './ReUIComponent';
 import Button from './Button';
 import Immutable from 'immutable';
 
-class CheckButtonGroup extends React.Component {
+class CheckButtonGroup extends ReUIComponent {
   static defaultProps = {
     onChange: function () {}
   };
@@ -19,10 +20,10 @@ class CheckButtonGroup extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+    this.state = Object.assign(this.state, {
       // A set of active buttons
       active: Immutable.Set()
-    };
+    });
   }
 
   render() {
@@ -49,7 +50,9 @@ class CheckButtonGroup extends React.Component {
     return React.Children.map(this.props.children, (child, i) => {
       return React.cloneElement(child, {
         active: this.state.active.has(i),
-        onClick: () => this._onButtonClick(i)
+        onClick: () => this._onButtonClick(i),
+        // This allows a user to redefine each button's classNames keeping
+        classNames: Object.assign(this.state.classNames.Button, child.props.classNames)
       });
     });
   }

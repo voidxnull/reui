@@ -1,7 +1,8 @@
 import React from 'react';
+import ReUIComponent from './ReUIComponent';
 import classNames from 'classnames';
 
-class Switch extends React.Component {
+export default class Switch extends ReUIComponent {
   static defaultProps = {
     caption: '',
     checked: false,
@@ -25,13 +26,13 @@ class Switch extends React.Component {
 
   render() {
     var switchClass = classNames(
-      Switch.classNames.handle,
-      this.state.checked && Switch.classNames.handleChecked
+      this.state.classNames.handle,
+      this.state.checked && this.state.classNames.handleChecked
     );
 
     return (
-      <div className={Switch.classNames.switch} onClick={this._onClick.bind(this)}>
-        <div className={Switch.classNames.handleWrapper}>
+      <div className={this.state.classNames.switch} onClick={this._onClick.bind(this)}>
+        <div className={this.state.classNames.handleWrapper}>
           <div className={switchClass} />
         </div>
       </div>
@@ -40,11 +41,9 @@ class Switch extends React.Component {
 
   _onClick(e) {
     this.setState({
-      checked: !this.state.checked,
+      checked: !this.state.checked
     });
     this.props.onChange(this.state.checked);
     e.stopPropagation();
   }
 }
-
-export default Switch;

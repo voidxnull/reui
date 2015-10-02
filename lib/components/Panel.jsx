@@ -1,6 +1,7 @@
 import React from 'react';
+import ReUIComponent from './ReUIComponent';
 
-class Panel extends React.Component {
+class Panel extends ReUIComponent {
   static classNames = {
     panel: 'f-panel',
     panelHeading: 'f-panel__heading',
@@ -9,7 +10,7 @@ class Panel extends React.Component {
 
   render() {
     return (
-      <div className={Panel.classNames.panel}>
+      <div className={this.state.classNames.panel}>
         {this.props.children}
       </div>
     );
