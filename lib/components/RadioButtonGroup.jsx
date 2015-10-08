@@ -8,15 +8,6 @@ class RadioButtonGroup extends React.Component {
     onChange: function () {}
   };
 
-  static classNames = {
-    buttonGroup: 'f-btn-group',
-    Button: {
-      button: 'f-btn',
-      active: 'f-btn_active',
-      disabled: 'f-btn_disabled'
-    }
-  };
-
   constructor(props) {
     super(props);
 

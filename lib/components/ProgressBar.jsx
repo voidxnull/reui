@@ -6,12 +6,6 @@ class ProgressBar extends React.Component {
     of: 100
   };
 
-  static classNames = {
-    progressBar: 'f-progress',
-    caption: 'f-progress__caption',
-    bar: 'f-progress__bar'
-  };
-
   render() {
     var style = {
       width: `${this._calculatePercent()}%`

@@ -9,12 +9,6 @@ export default class Button extends React.Component {
     onActive: function () {}
   };
 
-  static classNames = {
-    button: 'f-btn',
-    active: 'f-btn_active',
-    disabled: 'f-btn_disabled'
-  };
-
   render() {
     var { disabled, active, title, children, ...otherProps } = this.props;
     var className = classNames(

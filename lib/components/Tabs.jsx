@@ -5,14 +5,6 @@ import classNames from 'classnames';
  *  Tabs
  */
 export class Tabs extends React.Component {
-  static classNames = {
-    tabs: 'f-tabs',
-    menu: 'f-tabs__menu',
-    menuItem: 'f-tabs__menu__item',
-    menuItemActive: 'f-tabs__menu__item_active',
-    tab: 'f-tabs__tab'
-  };
-
   constructor(props) {
     super(props);
 
