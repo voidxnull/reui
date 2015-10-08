@@ -1,8 +1,7 @@
 import React from 'react';
-import ReUIComponent from './ReUIComponent';
 import classNames from 'classnames';
 
-export default class Button extends ReUIComponent {
+export default class Button extends React.Component {
   static defaultProps = {
     disabled: false,
     active: false,

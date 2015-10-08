@@ -1,9 +1,8 @@
 import React from 'react';
-import ReUIComponent from './ReUIComponent';
 import Button from './Button';
 import Immutable from 'immutable';
 
-class CheckButtonGroup extends ReUIComponent {
+class CheckButtonGroup extends React.Component {
   static defaultProps = {
     onChange: function () {}
   };

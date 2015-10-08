@@ -1,9 +1,8 @@
 import React from 'react';
-import ReUIComponent from './ReUIComponent';
 import Button from './Button';
 
 
-class RadioButtonGroup extends ReUIComponent {
+class RadioButtonGroup extends React.Component {
   static defaultProps = {
     deselectable: false,
     onChange: function () {}

@@ -1,7 +1,6 @@
 import React from 'react';
-import ReUIComponent from './ReUIComponent';
 
-class ProgressBar extends ReUIComponent {
+class ProgressBar extends React.Component {
   static defaultProps = {
     value: 0,
     of: 100

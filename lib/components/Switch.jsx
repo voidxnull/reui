@@ -1,19 +1,11 @@
 import React from 'react';
-import ReUIComponent from './ReUIComponent';
 import classNames from 'classnames';
 
-export default class Switch extends ReUIComponent {
+export default class Switch extends React.Component {
   static defaultProps = {
     caption: '',
     checked: false,
     onChange: function () {}
-  };
-
-  static classNames = {
-    switch: 'f-switch',
-    handle: 'f-switch__handle',
-    handleChecked: 'f-switch__handle_checked',
-    handleWrapper: 'f-switch__handle-wrapper'
   };
 
   constructor(props) {
