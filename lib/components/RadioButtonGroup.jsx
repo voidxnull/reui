@@ -1,8 +1,9 @@
 import React from 'react';
+import ButtonGroup from './ButtonGroup';
 import Button from './Button';
 
 
-class RadioButtonGroup extends React.Component {
+export default class RadioButtonGroup extends ButtonGroup {
   static displayName = 'RadioButtonGroup';
 
   static defaultProps = {
@@ -10,46 +11,39 @@ class RadioButtonGroup extends React.Component {
     onChange: function () {}
   };
 
+  static defaultTheme = {
+    buttonGroup: 'reui-button-group',
+    buttonLeft: Button.defaultTheme,
+    buttonMid: Button.defaultTheme,
+    buttonRight: Button.defaultTheme
+  };
+
   constructor(props) {
     super(props);
 
-    this.state = Object.assign(this.state, {
-      // The index of an active button
-      active: 0
-    });
-  }
-
-  render() {
-    var children = this._prepareChildren();
-    return (
-      <div className={RadioButtonGroup.classNames.buttonGroup}>
-        {this._prepareChildren()}
-      </div>
-    );
+    this.state = {
+      activeButton: 0
+    };
   }
 
   _onButtonClick(buttonId) {
-    var active = (this.props.deselectable && n === this.state.active)
-                 ? null
-                 : buttonId;
-
     this.setState({
-      active: active
+      activeButton: (this.props.deselectable && n === this.state.active)
+                    ? null
+                    : buttonId
     });
     this.props.onChange(buttonId);
   }
 
   _prepareChildren() {
     return React.Children.map(this.props.children, (child, i) => {
-      console.log(this.state)
+      const buttonTheme = this._getButtonTheme(i);
+
       return React.cloneElement(child, {
-        active: this.state.active === i,
+        active: this.state.activeButton === i,
         onClick: () => this._onButtonClick(i),
-        // This allows a user to redefine each button's classNames keeping
-        classNames: Object.assign(this.state.classNames.Button, child.props.classNames)
+        theme: buttonTheme
       });
     });
   }
 }
-
-export default RadioButtonGroup;
