@@ -13,7 +13,7 @@ describe('CheckButtonGroup', function() {
       </CheckButtonGroup>
     );
 
-    var element = TestUtils.findRenderedDOMComponentWithClass(group, 'f-btn-group');
-    expect(TestUtils.scryRenderedDOMComponentsWithClass(group, 'f-btn')).to.have.length(2);
+    var element = TestUtils.findRenderedDOMComponentWithClass(group, 'reui-button-group');
+    expect(TestUtils.scryRenderedDOMComponentsWithClass(group, 'reui-button')).to.have.length(2);
   });
 });

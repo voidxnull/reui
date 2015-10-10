@@ -1,20 +1,21 @@
 {
   "name": "reui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A set of customizable React components",
   "main": "index.jsx",
   "scripts": {
     "build:production": "NODE_ENV=production webpack -p --progress --profile --colors --config webpack.production.config.js",
     "build:development": "webpack --display-modules --progress --profile --colors",
     "dev": "webpack-dev-server",
-    "test": "NODE_PATH=$NODE_PATH:./ mocha --compilers js:babel/register --require ./test/testHelper.js --recursive 'test/**/*.@(js|jsx)'",
+    "test": "NODE_PATH=$NODE_PATH:lib mocha --compilers js:babel/register --require ./test/testHelper.js --recursive 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch"
   },
   "dependencies": {
     "babel-runtime": "^5.8.20",
     "immutable": "^3.7.5",
     "react": "^0.14.0",
-    "react-dom": "^0.14.0"
+    "react-dom": "^0.14.0",
+    "react-themeable": "^1.0.1"
   },
   "devDependencies": {
     "babel": "^5.8.23",
@@ -28,6 +29,7 @@
     "mocha": "^2.3.3",
     "mocha-jsdom": "^1.0.0",
     "node-libs-browser": "^0.5.2",
+    "react-addons-test-utils": "^0.14.0",
     "webpack": "^1.12.1",
     "webpack-dev-server": "^1.11.0"
   },

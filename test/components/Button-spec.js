@@ -1,7 +1,7 @@
 import React from 'react';
-import TestUtils from 'react/lib/ReactTestUtils';
-import Button from 'components/Button';
+import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
+import Button from 'components/Button';
 
 describe('Button', function() {
   it('has title', function() {
@@ -9,7 +9,7 @@ describe('Button', function() {
       <Button title="Test Button" />
     );
 
-    var div = TestUtils.findRenderedDOMComponentWithTag(button, 'div');
+    var div = TestUtils.findRenderedDOMComponentWithTag(button, 'button');
     expect(div.textContent).to.equal('Test Button');
   });
 
@@ -22,7 +22,7 @@ describe('Button', function() {
       </Button>
     );
 
-    var div = TestUtils.findRenderedDOMComponentWithTag(button, 'div');
+    var div = TestUtils.findRenderedDOMComponentWithTag(button, 'button');
     expect(div.textContent).to.equal('Test Button12');
   });
 });
