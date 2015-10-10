@@ -1,6 +1,6 @@
 import React from 'react';
+import themeable from 'react-themeable';
 import BaseComponent from './BaseComponent';
-import classNames from 'classnames';
 
 /**
  *  Tabs
@@ -16,18 +16,25 @@ export class Tabs extends BaseComponent {
     };
   }
 
+  static defaultTheme = {
+    tabs: 'reui-tabs',
+    tab: 'reui-tabs__tab',
+    menu: 'reui-tabs__menu',
+    menuItem: 'reui-tabs__menu__item',
+    menuItemActive: 'reui-tabs__menu__item reui-tabs__menu__item--active'
+  };
+
   render() {
-    var tabs = (Array.isArray(this.props.children))
-               ? this.props.children
-               : [this.props.children];
-    var menuItems = tabs.map(c => c.props.title);
+    const theme = themeable(this._mixTheme());
+    const menuItems = React.Children.map(this.props.children, c => c.props.title);
 
     return (
-      <div className={Tabs.classNames.tabs}>
+      <div {...theme(1, 'tab')}>
         <Menu items={menuItems}
               onClick={this._onClick.bind(this)}
-              activeItem={this.state.activeTab} />
-        {this._renderTabs(tabs)}
+              activeItem={this.state.activeTab}
+              theme={this._mixTheme()} />
+        {this._renderTabs()}
       </div>
     );
   }
@@ -38,13 +45,16 @@ export class Tabs extends BaseComponent {
     });
   }
 
-  _renderTabs(tabs) {
-    return tabs.map((tab, i) => {
-      var display = (this.state.activeTab === i)
-                    ? 'block'
-                    : 'none';
+  _renderTabs() {
+    return React.Children.map(this.props.children, (tab, i) => {
+      const display = (this.state.activeTab === i)
+                      ? 'block'
+                      : 'none';
+      const newTab = React.cloneElement(tab, {
+        theme: this._mixTheme()
+      });
 
-      return <div style={{display}} key={i}>{tab}</div>
+      return <div style={{display}} key={i}>{newTab}</div>
     })
   }
 }
@@ -60,9 +70,14 @@ export class Tab extends BaseComponent {
     classNames: Tabs.classNames
   };
 
+  static defaultTheme = {
+    tab: Tabs.defaultTheme.tab
+  };
+
   render() {
+    const theme = themeable(this._mixTheme());
     return (
-      <div className={Tabs.classNames.tab}>
+      <div {...theme(1, 'tab')}>
         {this.props.children}
       </div>
     );
@@ -72,7 +87,7 @@ export class Tab extends BaseComponent {
 /**
  *  Menu
  */
-class Menu extends React.Component {
+class Menu extends BaseComponent {
   static displayName = 'Menu';
 
   static defaultProps = {
@@ -82,17 +97,23 @@ class Menu extends React.Component {
     onClick: function () {}
   };
 
+  static defaultTheme = {
+    menu: Tabs.defaultTheme.menu
+  };
+
   render() {
-    var items = this.props.items.map((item, i) => {
+    const theme = themeable(this._mixTheme());
+    const items = this.props.items.map((item, i) => {
       return <MenuItem id={i}
                        title={item}
                        active={this.props.activeItem === i}
                        onClick={this.props.onClick}
-                       key={i} />;
+                       key={i}
+                       theme={this.props.theme} />;
     });
 
     return (
-      <div className={Tabs.classNames.menu}>
+      <div {...theme(1, 'menu')}>
         {items}
       </div>
     );
@@ -102,7 +123,7 @@ class Menu extends React.Component {
 /**
  *  Menu Item
  */
-class MenuItem extends React.Component {
+class MenuItem extends BaseComponent {
   static displayName = 'MenuItem';
 
   static defaultProps = {
@@ -113,12 +134,19 @@ class MenuItem extends React.Component {
     onClick: function () {}
   };
 
+  static defaultTheme = {
+    menuItem: Tabs.defaultTheme.menuItem,
+    menuItemActive: Tabs.defaultTheme.menuItemActive
+  };
+
   render() {
-    var className = classNames(Tabs.classNames.menuItem,
-                               this.props.active && Tabs.classNames.menuItemActive);
+    const theme = themeable(this._mixTheme());
+    const itemTheme = (this.props.active)
+                      ? theme(1, 'menuItemActive')
+                      : theme(2, 'menuItem');
 
     return (
-      <div className={className} onClick={this._onClick.bind(this)}>
+      <div {...itemTheme} onClick={this._onClick.bind(this)}>
         {this.props.title}
       </div>
     );
