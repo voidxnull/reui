@@ -1,10 +1,11 @@
 import React from 'react';
+import BaseComponent from './BaseComponent';
 import classNames from 'classnames';
 
 /**
  *  Tabs
  */
-export class Tabs extends React.Component {
+export class Tabs extends BaseComponent {
   static displayName = 'Tabs';
 
   constructor(props) {
@@ -51,7 +52,7 @@ export class Tabs extends React.Component {
 /**
  *  Tab
  */
-export class Tab extends React.Component {
+export class Tab extends BaseComponent {
   static displayName = 'Tab';
 
   static defaultProps = {

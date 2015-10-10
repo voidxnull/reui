@@ -1,6 +1,7 @@
 import React from 'react';
+import BaseComponent from './BaseComponent';
 
-class ProgressBar extends React.Component {
+class ProgressBar extends BaseComponent {
   static displayName = 'ProgressBar';
 
   static defaultProps = {

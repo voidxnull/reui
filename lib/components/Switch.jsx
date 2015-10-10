@@ -1,7 +1,8 @@
 import React from 'react';
+import BaseComponent from './BaseComponent';
 import classNames from 'classnames';
 
-export default class Switch extends React.Component {
+export default class Switch extends BaseComponent {
   static displayName = 'Switch';
 
   static defaultProps = {
