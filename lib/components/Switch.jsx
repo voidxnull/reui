@@ -2,6 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 
 export default class Switch extends React.Component {
+  static displayName = 'Switch';
+
   static defaultProps = {
     caption: '',
     checked: false,

@@ -5,6 +5,8 @@ import BaseComponent from './BaseComponent';
 import Button from './Button';
 
 export default class CheckButtonGroup extends BaseComponent {
+  static displayName = 'CheckButtonGroup';
+
   static defaultProps = {
     onChange: function () {}
   };

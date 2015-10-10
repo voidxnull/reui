@@ -1,6 +1,8 @@
 import React from 'react';
 
 class ProgressBar extends React.Component {
+  static displayName = 'ProgressBar';
+
   static defaultProps = {
     value: 0,
     of: 100

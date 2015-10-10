@@ -3,6 +3,8 @@ import Button from './Button';
 
 
 class RadioButtonGroup extends React.Component {
+  static displayName = 'RadioButtonGroup';
+
   static defaultProps = {
     deselectable: false,
     onChange: function () {}

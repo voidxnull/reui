@@ -2,6 +2,8 @@ import React from 'react';
 import BaseComponent from './BaseComponent';
 
 export default class Link extends BaseComponent {
+  static displayName = 'Link';
+
   static defaultProps = {
     className: '',
     title: '',

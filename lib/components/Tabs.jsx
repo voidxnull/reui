@@ -5,6 +5,8 @@ import classNames from 'classnames';
  *  Tabs
  */
 export class Tabs extends React.Component {
+  static displayName = 'Tabs';
+
   constructor(props) {
     super(props);
 
@@ -50,6 +52,8 @@ export class Tabs extends React.Component {
  *  Tab
  */
 export class Tab extends React.Component {
+  static displayName = 'Tab';
+
   static defaultProps = {
     title: 'No Title',
     classNames: Tabs.classNames
@@ -68,6 +72,8 @@ export class Tab extends React.Component {
  *  Menu
  */
 class Menu extends React.Component {
+  static displayName = 'Menu';
+
   static defaultProps = {
     items: [],
     activeItem: 0,
@@ -96,6 +102,8 @@ class Menu extends React.Component {
  *  Menu Item
  */
 class MenuItem extends React.Component {
+  static displayName = 'MenuItem';
+
   static defaultProps = {
     id: 0,
     title: '',
