@@ -1,6 +1,6 @@
 import React from 'react';
+import themeable from 'react-themeable';
 import BaseComponent from './BaseComponent';
-import classNames from 'classnames';
 
 export default class Switch extends BaseComponent {
   static displayName = 'Switch';
@@ -9,6 +9,13 @@ export default class Switch extends BaseComponent {
     caption: '',
     checked: false,
     onChange: function () {}
+  };
+
+  static defaultTheme = {
+    switch: 'reui-switch',
+    handleWrapper: 'reui-switch__handle-wrapper',
+    handle: 'reui-switch__handle',
+    handleChecked: 'reui-switch__handle reui-switch__handle--checked'
   };
 
   constructor(props) {
@@ -20,15 +27,16 @@ export default class Switch extends BaseComponent {
   }
 
   render() {
-    var switchClass = classNames(
-      this.state.classNames.handle,
-      this.state.checked && this.state.classNames.handleChecked
-    );
+    const theme = themeable(this._mixTheme());
+
+    var handleTheme = (this.state.checked)
+                      ? theme(2, 'handleChecked')
+                      : theme(3, 'handle');
 
     return (
-      <div className={this.state.classNames.switch} onClick={this._onClick.bind(this)}>
-        <div className={this.state.classNames.handleWrapper}>
-          <div className={switchClass} />
+      <div {...theme(1, 'switch')} onClick={this._onClick.bind(this)}>
+        <div {...theme(1, 'handleWrapper')}>
+          <div {...handleTheme} />
         </div>
       </div>
     );
