@@ -1,4 +1,5 @@
 import React from 'react';
+import themeable from 'react-themeable';
 import BaseComponent from './BaseComponent';
 
 class ProgressBar extends BaseComponent {
@@ -9,15 +10,22 @@ class ProgressBar extends BaseComponent {
     of: 100
   };
 
+  static defaultTheme = {
+    progressBar: 'reui-progress',
+    bar: 'reui-progress__bar',
+    caption: 'reui-progress__caption'
+  };
+
   render() {
-    var style = {
+    const theme = themeable(this._mixTheme());
+    const style = {
       width: `${this._calculatePercent()}%`
     };
 
     return (
-      <div className={this.state.classNames.progressBar}>
-        <div className={this.state.classNames.caption}>{this.props.value}/{this.props.of}</div>
-        <div className={this.state.classNames.bar} style={style} />
+      <div {...theme(1, 'progressBar')}>
+        <div {...theme(2, 'caption')}>{this.props.value}/{this.props.of}</div>
+        <div {...theme(3, 'bar')} style={style} />
       </div>
     );
   }
