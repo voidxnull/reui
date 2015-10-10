@@ -4,8 +4,8 @@ import { expect } from 'chai';
 import Button from 'components/Button';
 import CheckButtonGroup from 'components/CheckButtonGroup.jsx';
 
-describe('CheckButtonGroup', function() {
-  it('renders children', function() {
+describe('CheckButtonGroup', () => {
+  it('renders children', () => {
     var group = TestUtils.renderIntoDocument(
       <CheckButtonGroup>
         <Button id="button-1" title="1" />

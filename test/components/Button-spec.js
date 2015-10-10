@@ -3,8 +3,8 @@ import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 import Button from 'components/Button';
 
-describe('Button', function() {
-  it('has title', function() {
+describe('Button', () => {
+  it('has title', () => {
     var button = TestUtils.renderIntoDocument(
       <Button title="Test Button" />
     );
@@ -13,8 +13,7 @@ describe('Button', function() {
     expect(div.textContent).to.equal('Test Button');
   });
 
-  // TODO: Find a better way to test children
-  it('renders children after title', function() {
+  it('renders children after title', () => {
     var button = TestUtils.renderIntoDocument(
       <Button title="Test Button">
         <span>1</span>
