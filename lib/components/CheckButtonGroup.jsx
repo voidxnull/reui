@@ -1,34 +1,44 @@
 import React from 'react';
-import Button from './Button';
 import Immutable from 'immutable';
+import themeable from 'react-themeable';
+import BaseComponent from './BaseComponent';
+import Button from './Button';
 
-class CheckButtonGroup extends React.Component {
+export default class CheckButtonGroup extends BaseComponent {
   static defaultProps = {
     onChange: function () {}
+  };
+
+  static defaultTheme = {
+    buttonGroup: 'reui-button-group',
+    buttonLeft: Button.defaultTheme,
+    buttonMid: Button.defaultTheme,
+    buttonRight: Button.defaultTheme
   };
 
   constructor(props) {
     super(props);
 
-    this.state = Object.assign(this.state, {
+    this.state = {
       // A set of active buttons
       active: Immutable.Set()
-    });
+    };
   }
 
   render() {
-    var children = this._prepareChildren();
+    const theme = themeable(this._mixTheme());
+
     return (
-      <div className={CheckButtonGroup.classNames.buttonGroup}>
+      <div {...theme(1, 'buttonGroup')}>
         {this._prepareChildren()}
       </div>
     );
   }
 
   _onButtonClick(buttonId) {
-    var active = (this.state.active.has(buttonId))
-                 ? this.state.active.delete(buttonId)
-                 : this.state.active.add(buttonId);
+    const active = (this.state.active.has(buttonId))
+                   ? this.state.active.delete(buttonId)
+                   : this.state.active.add(buttonId);
 
     this.setState({
       active: active
@@ -38,14 +48,28 @@ class CheckButtonGroup extends React.Component {
 
   _prepareChildren() {
     return React.Children.map(this.props.children, (child, i) => {
+      const buttonTheme = this._getButtonTheme(i);
+
+      // TODO(Dmitry): There may be a performance issue.
       return React.cloneElement(child, {
         active: this.state.active.has(i),
         onClick: () => this._onButtonClick(i),
-        // This allows a user to redefine each button's classNames keeping
-        classNames: Object.assign(this.state.classNames.Button, child.props.classNames)
+        // This allows a user to redefine each button's theme
+        theme: buttonTheme
       });
     });
   }
-}
 
-export default CheckButtonGroup;
+  _getButtonTheme(n) {
+    const numChildren = React.Children.count(this.props.children);
+    const themes = this._mixTheme();
+
+    if (n === 1) {
+      return themes.buttonLeft;
+    } else if (n === numChildren - 1) {
+      return themes.buttonRight;
+    } else {
+      return themes.buttonMid;
+    }
+  }
+}

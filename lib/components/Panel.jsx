@@ -1,13 +1,15 @@
 import React from 'react';
+import BaseComponet from './BaseComponent';
+import themeable from 'react-themeable';
 
-class Panel extends React.Component {
+export default class Panel extends BaseComponent {
   render() {
+    const theme = themeable(this._mixTheme());
+
     return (
-      <div className={this.state.classNames.panel}>
+      <div {theme(1, 'panel')}>
         {this.props.children}
       </div>
     );
   }
 }
-
-export default Panel;
