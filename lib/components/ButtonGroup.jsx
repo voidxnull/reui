@@ -4,6 +4,10 @@ import BaseComponent from './BaseComponent';
 import Button from './Button';
 
 export default class ButtonGroup extends BaseComponent {
+  static defaultProps = {
+    activeButtons: []
+  };
+
   static defaultTheme = {
     buttonGroup: 'reui-button-group',
     buttonLeft: Button.defaultTheme,
@@ -26,7 +30,8 @@ export default class ButtonGroup extends BaseComponent {
       const buttonTheme = this._getButtonTheme(i);
 
       return React.cloneElement(child, {
-        theme: buttonTheme
+        active: this._isButtonActive(i),
+        theme: Object.assign({}, child.props.theme, buttonTheme)
       });
     });
   }
@@ -42,5 +47,9 @@ export default class ButtonGroup extends BaseComponent {
     } else {
       return themes.buttonMid;
     }
+  }
+
+  _isButtonActive(buttonId) {
+    return this.props.activeButtons.indexOf(buttonId) > -1;
   }
 }

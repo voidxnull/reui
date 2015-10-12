@@ -1,21 +1,15 @@
 import React from 'react';
+import BaseComponent from './BaseComponent';
 import ButtonGroup from './ButtonGroup';
 import Button from './Button';
 
 
-export default class RadioButtonGroup extends ButtonGroup {
+export default class RadioButtonGroup extends BaseComponent {
   static displayName = 'RadioButtonGroup';
 
   static defaultProps = {
     deselectable: false,
     onChange: function () {}
-  };
-
-  static defaultTheme = {
-    buttonGroup: 'reui-button-group',
-    buttonLeft: Button.defaultTheme,
-    buttonMid: Button.defaultTheme,
-    buttonRight: Button.defaultTheme
   };
 
   constructor(props) {
@@ -24,6 +18,11 @@ export default class RadioButtonGroup extends ButtonGroup {
     this.state = {
       activeButton: 0
     };
+  }
+
+  render() {
+    return <ButtonGroup children={this._prepareChildren()}
+                        activeButtons={[this.state.activeButton]} />;
   }
 
   _onButtonClick(buttonId) {
@@ -37,12 +36,8 @@ export default class RadioButtonGroup extends ButtonGroup {
 
   _prepareChildren() {
     return React.Children.map(this.props.children, (child, i) => {
-      const buttonTheme = this._getButtonTheme(i);
-
       return React.cloneElement(child, {
-        active: this.state.activeButton === i,
-        onClick: () => this._onButtonClick(i),
-        theme: buttonTheme
+        onClick: () => this._onButtonClick(i)
       });
     });
   }
