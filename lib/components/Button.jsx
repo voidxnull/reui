@@ -7,8 +7,6 @@ import themeable from 'react-themeable';
  * Can be used as a switch.
  */
 export default class Button extends BaseComponent {
-  static displayName = 'Button';
-
   static defaultProps = {
     disabled: false,
     active: false,

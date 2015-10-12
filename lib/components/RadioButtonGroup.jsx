@@ -5,8 +5,6 @@ import Button from './Button';
 
 
 export default class RadioButtonGroup extends BaseComponent {
-  static displayName = 'RadioButtonGroup';
-
   static defaultProps = {
     deselectable: false,
     onChange: function () {}

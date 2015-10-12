@@ -2,9 +2,7 @@ import React from 'react';
 import themeable from 'react-themeable';
 import BaseComponent from './BaseComponent';
 
-class ProgressBar extends BaseComponent {
-  static displayName = 'ProgressBar';
-
+export default class ProgressBar extends BaseComponent {
   static defaultProps = {
     value: 0,
     of: 100
@@ -34,5 +32,3 @@ class ProgressBar extends BaseComponent {
     return this.props.value / this.props.of * 100;
   }
 }
-
-export default ProgressBar;

@@ -3,8 +3,6 @@ import themeable from 'react-themeable';
 import BaseComponent from './BaseComponent';
 
 export default class Switch extends BaseComponent {
-  static displayName = 'Switch';
-
   static defaultProps = {
     caption: '',
     checked: false,

@@ -6,8 +6,6 @@ import BaseComponent from './BaseComponent';
  *  Tabs
  */
 export class Tabs extends BaseComponent {
-  static displayName = 'Tabs';
-
   constructor(props) {
     super(props);
 
@@ -63,8 +61,6 @@ export class Tabs extends BaseComponent {
  *  Tab
  */
 export class Tab extends BaseComponent {
-  static displayName = 'Tab';
-
   static defaultProps = {
     title: 'No Title',
     classNames: Tabs.classNames
@@ -88,8 +84,6 @@ export class Tab extends BaseComponent {
  *  Menu
  */
 class Menu extends BaseComponent {
-  static displayName = 'Menu';
-
   static defaultProps = {
     items: [],
     activeItem: 0,
@@ -124,8 +118,6 @@ class Menu extends BaseComponent {
  *  Menu Item
  */
 class MenuItem extends BaseComponent {
-  static displayName = 'MenuItem';
-
   static defaultProps = {
     id: 0,
     title: '',
