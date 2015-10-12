@@ -1,5 +1,4 @@
 import React from 'react';
-import Immutable from 'immutable';
 import themeable from 'react-themeable';
 import BaseComponent from './BaseComponent';
 import ButtonGroup from './ButtonGroup';
