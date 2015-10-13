@@ -1,6 +1,14 @@
 .panel {
     margin-bottom: 10px;
-    padding: 10px;
     border: 1px solid #EEE;
     border-radius: 5px;
+}
+
+.panelHeading {
+    padding: 10px;
+    border-bottom: 1px solid #EEE;
+}
+
+.panelBody {
+    padding: 10px;
 }
