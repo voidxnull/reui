@@ -27,7 +27,7 @@ export class Tabs extends BaseComponent {
     const menuItems = React.Children.map(this.props.children, c => c.props.title);
 
     return (
-      <div {...theme(1, 'tab')}>
+      <div {...theme(1, 'tabs')}>
         <Menu items={menuItems}
               onClick={this._onClick.bind(this)}
               activeItem={this.state.activeTab}
