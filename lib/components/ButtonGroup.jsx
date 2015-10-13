@@ -10,9 +10,7 @@ export default class ButtonGroup extends BaseComponent {
 
   static defaultTheme = {
     buttonGroup: 'reui-button-group',
-    buttonLeft: Button.defaultTheme,
-    buttonMid: Button.defaultTheme,
-    buttonRight: Button.defaultTheme
+    button: Button.defaultTheme
   };
 
   render() {
@@ -27,26 +25,11 @@ export default class ButtonGroup extends BaseComponent {
 
   _prepareChildren() {
     return React.Children.map(this.props.children, (child, i) => {
-      const buttonTheme = this._getButtonTheme(i);
-
       return React.cloneElement(child, {
         active: this._isButtonActive(i),
-        theme: Object.assign({}, child.props.theme, buttonTheme)
+        theme: this._mixTheme().button
       });
     });
-  }
-
-  _getButtonTheme(n) {
-    const numChildren = React.Children.count(this.props.children);
-    const themes = this._mixTheme();
-
-    if (n === 1) {
-      return themes.buttonLeft;
-    } else if (n === numChildren - 1) {
-      return themes.buttonRight;
-    } else {
-      return themes.buttonMid;
-    }
   }
 
   _isButtonActive(buttonId) {

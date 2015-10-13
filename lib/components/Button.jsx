@@ -17,8 +17,8 @@ export default class Button extends BaseComponent {
 
   static defaultTheme = {
     button: 'reui-button',
-    disabled: 'reui-button reui-button--disabled',
-    active: 'reui-button reui-button--active'
+    buttonDisabled: 'reui-button reui-button--disabled',
+    buttonActive: 'reui-button reui-button--active'
   };
 
   render() {
@@ -35,9 +35,9 @@ export default class Button extends BaseComponent {
 
   _getButtonTheme(theme) {
     if (this.props.disabled) {
-      return theme(2, 'disabled');
+      return theme(2, 'buttonDisabled');
     } else if (this.props.active) {
-      return theme(3, 'active');
+      return theme(3, 'buttonActive');
     } else {
       return theme(1, 'button');
     }
