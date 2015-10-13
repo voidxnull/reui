@@ -9,8 +9,8 @@ describe('Button', () => {
       <Button title="Test Button" />
     );
 
-    var div = TestUtils.findRenderedDOMComponentWithTag(button, 'button');
-    expect(div.textContent).to.equal('Test Button');
+    var domButton = TestUtils.findRenderedDOMComponentWithTag(button, 'button');
+    expect(domButton.textContent).to.equal('Test Button');
   });
 
   it('renders children after title', () => {
@@ -21,7 +21,43 @@ describe('Button', () => {
       </Button>
     );
 
-    var div = TestUtils.findRenderedDOMComponentWithTag(button, 'button');
-    expect(div.textContent).to.equal('Test Button12');
+    var domButton = TestUtils.findRenderedDOMComponentWithTag(button, 'button');
+    expect(domButton.textContent).to.equal('Test Button12');
+  });
+
+  describe('states', () => {
+    before(() => {
+      // Set a global theme for Button
+      global.oldTheme = Button.defaultTheme;
+      Button.defaultTheme = {
+        button: 'button',
+        disabled: 'buttonDisabled',
+        active: 'buttonActive'
+      };
+    });
+
+    after(() => {
+      // Restore the global theme
+      Button.defaultTheme = global.oldTheme;
+    });
+
+    it('correctly renders disabled state', () => {
+      var button = TestUtils.renderIntoDocument(
+        <Button title="Test Button" disabled />
+      );
+      var domButton = TestUtils.findRenderedDOMComponentWithTag(button, 'button');
+
+      expect(domButton.disabled).to.be.true;
+      expect(domButton.className).to.be.contain('buttonDisabled');
+    });
+
+    it('correctly renders active state', () => {
+      var button = TestUtils.renderIntoDocument(
+        <Button title="Test Button" active />
+      );
+      var domButton = TestUtils.findRenderedDOMComponentWithTag(button, 'button');
+
+      expect(domButton.className).to.be.contain('buttonActive');
+    });
   });
 });
