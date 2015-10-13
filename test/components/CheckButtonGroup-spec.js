@@ -14,6 +14,6 @@ describe('CheckButtonGroup', () => {
     );
 
     var element = TestUtils.findRenderedDOMComponentWithClass(group, 'reui-button-group');
-    expect(TestUtils.scryRenderedDOMComponentsWithClass(group, 'reui-button')).to.have.length(2);
+    expect(TestUtils.scryRenderedDOMComponentsWithTag(group, 'button')).to.have.length(2);
   });
 });

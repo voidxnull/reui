@@ -31,8 +31,8 @@ describe('Button', () => {
       global.oldTheme = Button.defaultTheme;
       Button.defaultTheme = {
         button: 'button',
-        disabled: 'buttonDisabled',
-        active: 'buttonActive'
+        buttonDisabled: 'buttonDisabled',
+        buttonActive: 'buttonActive'
       };
     });
 
