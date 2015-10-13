@@ -1,7 +1,8 @@
+require('./global.css');
+
 export default {
   Button: require('./Button.css'),
-  ButtonGroup: {
-    buttonGroup: require('./ButtonGroup.css'),
-    button: require('./ButtonGroup.css')
-  }
+  ButtonGroup: require('./ButtonGroup.css'),
+  Panel: require('./Panel.css'),
+  Tabs: require('./Tabs.css')
 }

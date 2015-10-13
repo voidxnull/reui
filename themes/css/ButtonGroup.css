@@ -1,16 +1,21 @@
 .button {
-    border: 1px solid gray;
+    composes: button from './Button.css';
+    border-radius: 0;
 }
+
 
 .buttonActive {
     composes: button;
-    color: red;
-    border: 1px solid red;
+    background-color: #f4f4f4;
 }
 
 .buttonDisabled {
     composes: button;
     color: gray;
+}
+
+.button:not(:first-child) {
+    border-left-color: transparent;
 }
 
 .button:first-child {
@@ -22,3 +27,5 @@
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+
+

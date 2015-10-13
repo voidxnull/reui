@@ -1,16 +1,32 @@
 .button {
     padding: 10px 20px;
     background-color: white;
-    border: 1px solid gray;
+    border: 1px solid #e7e7e7;
     border-radius: 5px;
+    cursor: pointer;
+    font-family: "PT Sans", sans-serif;
+}
+
+.button:hover {
+    background-color: #EEE;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button:not(.buttonDisabled):active {
+    background-color: #DDD;
 }
 
 .buttonDisabled {
     composes: button;
+    background-color: #EEE;
     color: gray;
+    cursor: not-allowed;
 }
 
 .buttonActive {
     composes: button;
-    color: red;
+    background-color: #f4f4f4;
 }

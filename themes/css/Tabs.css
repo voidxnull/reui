@@ -1,0 +1,21 @@
+.tab {
+    padding: 10px;
+    border: 1px solid #EEE;
+}
+
+.menuItem {
+    display: inline-block;
+    margin-bottom: -1px;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-bottom: none;
+    cursor: pointer;
+}
+
+.menuItemActive {
+    composes: menuItem;
+    background-color: white;
+    border-color: #EEE;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
