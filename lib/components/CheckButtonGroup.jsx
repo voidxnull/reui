@@ -20,14 +20,15 @@ export default class CheckButtonGroup extends BaseComponent {
 
   render() {
     return <ButtonGroup children={this._prepareChildren()}
-                        activeButtons={this.state.activeButtons} />;
+                        activeButtons={this.state.activeButtons}
+                        theme={this.props.theme} />;
   }
 
   _onButtonClick(buttonId) {
     var activeButtons = this.state.activeButtons;
 
     if (activeButtons.indexOf(buttonId) > -1) {
-      activeButtons.splice(activeButtons.indexOf(buttonId))
+      activeButtons.splice(activeButtons.indexOf(buttonId), 1)
     } else {
       activeButtons.push(buttonId)
     }

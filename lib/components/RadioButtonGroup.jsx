@@ -20,7 +20,8 @@ export default class RadioButtonGroup extends BaseComponent {
 
   render() {
     return <ButtonGroup children={this._prepareChildren()}
-                        activeButtons={[this.state.activeButton]} />;
+                        activeButtons={[this.state.activeButton]}
+                        theme={this.props.theme} />;
   }
 
   _onButtonClick(buttonId) {
