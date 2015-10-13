@@ -2,13 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReUI from '../';
 
-import bootstrapTheme from '../themes/bootstrap';
+import theme from '../themes/css';
 
-ReUI.setGlobalTheme(bootstrapTheme);
+console.log(theme)
+
+ReUI.setGlobalTheme(theme);
 
 let page = (
   <div>
-    <ReUI.Button title="Test" />
+    <ReUI.Button title="Button" />
+    <ReUI.Button title="Active Button" active />
+    <ReUI.Button title="Disabled Button" disabled />
     <ReUI.Tabs>
       <ReUI.Tab title="One">
         1
@@ -30,7 +34,7 @@ let page = (
       <ReUI.Button title="Four" />
     </ReUI.CheckButtonGroup>
   </div>
-)
+);
 
 ReactDOM.render(
   page,
