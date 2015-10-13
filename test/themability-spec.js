@@ -9,14 +9,21 @@ describe('themability', () => {
 
     describe(key, () => {
       describe('_mixTheme', () => {
-        it('returns an object with combined themes', () => {
+        before(() => {
+          global.oldTheme = componentClass.defaultTheme;
           componentClass.defaultTheme = {
             one: 'one',
             three: {
               test: 'three'
             }
           };
+        });
 
+        after(() => {
+          componentClass.defaultTheme = global.oldTheme;
+        });
+
+        it('returns an object with combined themes', () => {
           let component = TestUtils.renderIntoDocument(React.createElement(componentClass, {theme: {two: 'two'}}));
           expect(component._mixTheme()).to.deep.equal({
             one: 'one',
