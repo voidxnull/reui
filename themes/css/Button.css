@@ -1,0 +1,16 @@
+.button {
+    padding: 10px 20px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.buttonDisabled {
+    composes: button;
+    color: gray;
+}
+
+.buttonActive {
+    composes: button;
+    color: red;
+}

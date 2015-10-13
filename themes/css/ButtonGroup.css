@@ -1,0 +1,24 @@
+.button {
+    border: 1px solid gray;
+}
+
+.buttonActive {
+    composes: button;
+    color: red;
+    border: 1px solid red;
+}
+
+.buttonDisabled {
+    composes: button;
+    color: gray;
+}
+
+.button:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.button:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

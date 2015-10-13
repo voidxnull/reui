@@ -28,6 +28,10 @@ module.exports = {
           stage: 0
         }
       },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader?modules"
+      }
     ]
   },
 
