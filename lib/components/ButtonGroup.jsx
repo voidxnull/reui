@@ -10,7 +10,9 @@ export default class ButtonGroup extends BaseComponent {
 
   static defaultTheme = {
     buttonGroup: 'reui-button-group',
-    button: Button.defaultTheme
+    button: '',
+    buttonDisabled: '',
+    buttonActive: ''
   };
 
   render() {
@@ -27,7 +29,7 @@ export default class ButtonGroup extends BaseComponent {
     return React.Children.map(this.props.children, (child, i) => {
       return React.cloneElement(child, {
         active: this._isButtonActive(i),
-        theme: this._mixTheme().button
+        theme: this._mixTheme()
       });
     });
   }
