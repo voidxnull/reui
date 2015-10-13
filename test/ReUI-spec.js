@@ -3,6 +3,14 @@ import ReUI from 'ReUI';
 
 describe('ReUI', () => {
   describe('.setGlobalTheme', () => {
+    before(() => {
+      global.oldTheme = Button.defaultTheme;
+    });
+
+    after(() => {
+      Button.defaultTheme = global.oldTheme;
+    });
+
     it('sets specified themes', () => {
       let theme = {
         button: 'testButton',
