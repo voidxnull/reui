@@ -4,18 +4,23 @@ import ReUI from '../';
 
 import theme from '../themes/css';
 
-console.log(theme)
-
 ReUI.setGlobalTheme(theme);
 
 let page = (
-  <div>
+  <ReUI.PageWrapper>
     <ReUI.Panel title="Button">
-      <ReUI.Button title="Button" />
-      <br />
-      <ReUI.Button title="Active Button" active />
-      <br />
-      <ReUI.Button title="Disabled Button" disabled />
+      <p>
+        <ReUI.Button title="Button sm" size="xs" />
+        <ReUI.Button title="Button sm" size="sm" />
+        <ReUI.Button title="Button md" size="md" />
+        <ReUI.Button title="Button lg" size="lg" />
+      </p>
+      <p>
+        <ReUI.Button title="Active Button" active />
+      </p>
+      <p>
+        <ReUI.Button title="Disabled Button" disabled />
+      </p>
     </ReUI.Panel>
     <ReUI.Panel title="RadioButtonGroup">
       <ReUI.RadioButtonGroup>
@@ -43,7 +48,7 @@ let page = (
         </ReUI.Tab>
       </ReUI.Tabs>
     </ReUI.Panel>
-  </div>
+  </ReUI.PageWrapper>
 );
 
 ReactDOM.render(
