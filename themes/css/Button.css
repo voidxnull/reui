@@ -1,5 +1,5 @@
 .button {
-    padding: 10px 20px;
+    padding: 0.8em 1.5em;
     background-color: white;
     border: 1px solid #e7e7e7;
     border-radius: 5px;
@@ -17,6 +17,22 @@
 
 .button:not(.buttonDisabled):active {
     background-color: #DDD;
+}
+
+.buttonXs {
+    font-size: 0.6rem;
+}
+
+.buttonSm {
+    font-size: 0.8rem;
+}
+
+.buttonMd {
+    font-size: 1rem;
+}
+
+.buttonLg {
+    font-size: 1.2rem;
 }
 
 .buttonDisabled {

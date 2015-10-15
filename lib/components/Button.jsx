@@ -12,17 +12,22 @@ export default class Button extends BaseComponent {
     active: false,
     title: '',
     theme: null,
+    size: 'md',
     onActive: function () {}
   };
 
   static defaultTheme = {
     button: 'reui-button',
+    buttonXs: 'reui-button--xs',
+    buttonSm: 'reui-button--sm',
+    buttonMd: 'reui-button--md',
+    buttonLg: 'reui-button--lg',
     buttonDisabled: 'reui-button reui-button--disabled',
     buttonActive: 'reui-button reui-button--active'
   };
 
   render() {
-    const theme = this._getButtonTheme(themeable(this._mixTheme()));
+    const theme = this._getTheme(themeable(this._mixTheme()));
     const { title, children, ...otherProps } = this.props;
 
     return (
@@ -33,13 +38,27 @@ export default class Button extends BaseComponent {
     );
   }
 
-  _getButtonTheme(theme) {
+  _getTheme(theme) {
+    let size = this._getThemeIdBySize();
+
     if (this.props.disabled) {
-      return theme(2, 'buttonDisabled');
+      return theme(5, 'buttonDisabled', size);
     } else if (this.props.active) {
-      return theme(3, 'buttonActive');
+      return theme(6, 'buttonActive', size);
     } else {
-      return theme(1, 'button');
+      return theme(1, 'button', size);
+    }
+  }
+
+  _getThemeIdBySize() {
+    if (this.props.size === 'xs') {
+      return 'buttonXs';
+    } else if (this.props.size === 'sm') {
+      return 'buttonSm';
+    } else if (this.props.size === 'lg') {
+      return 'buttonLg';
+    } else {
+      return 'buttonMd';
     }
   }
 }
