@@ -1,5 +1,5 @@
 .button {
-    padding: 0.8em 1.5em;
+    padding: 0.5em 1em;
     background-color: white;
     border: 1px solid #e7e7e7;
     border-radius: 5px;
@@ -20,7 +20,7 @@
 }
 
 .buttonXs {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
 }
 
 .buttonSm {

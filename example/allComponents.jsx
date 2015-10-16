@@ -10,9 +10,15 @@ let page = (
   <ReUI.PageWrapper>
     <ReUI.Panel title="Button">
       <p>
-        <ReUI.Button title="Button sm" size="xs" />
+        <ReUI.Button title="Button xs" size="xs" />
+      </p>
+      <p>
         <ReUI.Button title="Button sm" size="sm" />
+      </p>
+      <p>
         <ReUI.Button title="Button md" size="md" />
+      </p>
+      <p>
         <ReUI.Button title="Button lg" size="lg" />
       </p>
       <p>
