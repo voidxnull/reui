@@ -7,7 +7,7 @@
     "build:production": "NODE_ENV=production webpack -p --progress --profile --colors --config webpack.production.config.js",
     "build:development": "webpack --display-modules --progress --profile --colors",
     "dev": "webpack-dev-server",
-    "test": "NODE_PATH=$NODE_PATH:lib mocha --compilers js:babel/register --require ./test/testHelper.js --recursive 'test/**/*.@(js|jsx)'",
+    "test": "NODE_PATH=$NODE_PATH:src mocha --compilers js:babel/register --require ./test/testHelper.js --recursive 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch"
   },
   "dependencies": {
