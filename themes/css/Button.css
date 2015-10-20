@@ -36,13 +36,11 @@
 }
 
 .buttonDisabled {
-    composes: button;
     background-color: #EEE;
     color: gray;
     cursor: not-allowed;
 }
 
 .buttonActive {
-    composes: button;
     background-color: #f4f4f4;
 }
