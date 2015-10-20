@@ -5,12 +5,10 @@
 
 
 .buttonActive {
-    composes: button;
     background-color: #f4f4f4;
 }
 
 .buttonDisabled {
-    composes: button;
     color: gray;
 }
 

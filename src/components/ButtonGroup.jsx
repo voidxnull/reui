@@ -4,6 +4,10 @@ import BaseComponent from './BaseComponent';
 import Button from './Button';
 
 export default class ButtonGroup extends BaseComponent {
+  static propTypes = {
+    activeButtons: React.PropTypes.arrayOf(React.PropTypes.number)
+  };
+
   static defaultProps = {
     activeButtons: []
   };
