@@ -47,11 +47,23 @@ Theme is just an object that associates components with its themes
 var theme = {
   Button: {
     button: 'button',
-    buttonDisabled: 'button disabled',
-    buttonActive: 'button active'
+    buttonDisabled: 'disabled',
+    buttonActive: 'active'
   },
   ...
 }
+```
+Then ```Button``` component would be rendered as
+```html
+<button class="button"></button>
+```
+or
+```html
+<button class="button disabled" disabled></button>
+```
+or
+```html
+<button class="button active"></button>
 ```
 See more in `themes/`
 
