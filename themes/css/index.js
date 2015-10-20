@@ -1,5 +1,3 @@
-require('./global.css');
-
 export default {
   Button: require('./Button.css'),
   ButtonGroup: require('./ButtonGroup.css'),

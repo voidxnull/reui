@@ -4,6 +4,8 @@ import ReUI from '../';
 
 import theme from '../themes/css';
 
+import './global.css';
+
 ReUI.setGlobalTheme(theme);
 
 let page = (
