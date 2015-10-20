@@ -1,1 +1,1 @@
-module.exports = require('./src/ReUI');
+module.exports = require('./lib/ReUI');

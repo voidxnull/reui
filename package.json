@@ -4,8 +4,8 @@
   "description": "A set of customizable React components",
   "main": "index.jsx",
   "scripts": {
-    "build:production": "NODE_ENV=production webpack -p --progress --profile --colors --config webpack.production.config.js",
-    "build:development": "webpack --display-modules --progress --profile --colors",
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile",
     "dev": "webpack-dev-server",
     "test": "NODE_PATH=$NODE_PATH:src mocha --compilers js:babel/register --require ./test/testHelper.js --recursive 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch"
