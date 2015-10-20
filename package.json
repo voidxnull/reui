@@ -35,12 +35,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/voidxnull/ReUI.git"
+    "url": "git+https://github.com/voidxnull/reui.git"
   },
   "bugs": {
-    "url": "https://github.com/voidxnull/ReUI/issues"
+    "url": "https://github.com/voidxnull/reui/issues"
   },
-  "homepage": "https://github.com/voidxnull/ReUI",
+  "homepage": "https://github.com/voidxnull/reui",
   "keywords": [
     "react",
     "ui",
