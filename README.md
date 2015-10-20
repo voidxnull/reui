@@ -53,7 +53,7 @@ var theme = {
   ...
 }
 ```
-Then ```Button``` component would be rendered as
+Then the ```Button``` component would be rendered as
 ```html
 <button class="button"></button>
 ```

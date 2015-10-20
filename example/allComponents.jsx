@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReUI from '../';
+import ReUI from '../src/ReUI';
 
 import theme from '../themes/css';
 
