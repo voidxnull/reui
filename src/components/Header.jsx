@@ -21,12 +21,12 @@ export default class Header extends BaseComponent {
     let header;
 
     switch (this.props.level) {
-      case 1: header = <h1 theme={...theme(1, 'header1')}>{this.props.children}</h1>; break;
-      case 2: header = <h2 theme={...theme(2, 'header2')}>{this.props.children}</h2>; break;
-      case 3: header = <h3 theme={...theme(3, 'header3')}>{this.props.children}</h3>; break;
-      case 4: header = <h4 theme={...theme(4, 'header4')}>{this.props.children}</h4>; break;
-      case 5: header = <h5 theme={...theme(5, 'header5')}>{this.props.children}</h5>; break;
-      case 6: header = <h6 theme={...theme(6, 'header6')}>{this.props.children}</h6>; break;
+      case 1: header = <h1 {...theme(1, 'header1')}>{this.props.children}</h1>; break;
+      case 2: header = <h2 {...theme(2, 'header2')}>{this.props.children}</h2>; break;
+      case 3: header = <h3 {...theme(3, 'header3')}>{this.props.children}</h3>; break;
+      case 4: header = <h4 {...theme(4, 'header4')}>{this.props.children}</h4>; break;
+      case 5: header = <h5 {...theme(5, 'header5')}>{this.props.children}</h5>; break;
+      case 6: header = <h6 {...theme(6, 'header6')}>{this.props.children}</h6>; break;
     }
 
     return header;
