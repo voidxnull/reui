@@ -3,6 +3,12 @@ import themeable from 'react-themeable';
 import BaseComponent from './BaseComponent';
 
 export default class Switch extends BaseComponent {
+  static propTypes = {
+    caption: React.PropTypes.string,
+    checked: React.PropTypes.bool,
+    onChange: React.PropTypes.func
+  };
+
   static defaultProps = {
     caption: '',
     checked: false,

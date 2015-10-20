@@ -5,6 +5,10 @@ import ButtonGroup from './ButtonGroup';
 import Button from './Button';
 
 export default class CheckButtonGroup extends BaseComponent {
+  static propTypes = {
+    onChange: React.PropTypes.func
+  };
+
   static defaultProps = {
     onChange: function () {}
   };

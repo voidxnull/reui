@@ -3,6 +3,10 @@ import BaseComponent from './BaseComponent';
 import themeable from 'react-themeable';
 
 export default class Panel extends BaseComponent {
+  static propTypes = {
+    propTypes: React.PropTypes.string
+  };
+
   static defaultProps = {
     title: ''
   };

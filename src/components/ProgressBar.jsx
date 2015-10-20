@@ -3,6 +3,11 @@ import themeable from 'react-themeable';
 import BaseComponent from './BaseComponent';
 
 export default class ProgressBar extends BaseComponent {
+  static propTypes = {
+    value: React.PropTypes.number.isRequired,
+    of: React.PropTypes.number
+  };
+
   static defaultProps = {
     value: 0,
     of: 100

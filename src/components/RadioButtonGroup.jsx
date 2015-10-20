@@ -5,6 +5,11 @@ import Button from './Button';
 
 
 export default class RadioButtonGroup extends BaseComponent {
+  static propTypes = {
+    deselectable: React.PropTypes.bool,
+    onChange: React.PropTypes.func
+  };
+
   static defaultProps = {
     deselectable: false,
     onChange: function () {}

@@ -4,7 +4,7 @@ import themeable from 'react-themeable';
 
 export default class Header extends BaseComponent {
   static propTypes = {
-    level: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6])
+    level: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6]).isRequired
   };
 
   static defaultProps = {

@@ -6,6 +6,10 @@ import BaseComponent from './BaseComponent';
  *  Tabs
  */
 export class Tabs extends BaseComponent {
+  static propTypes = {
+    children: React.PropTypes.arrayOf(Tab).isRequired
+  };
+
   constructor(props) {
     super(props);
 
