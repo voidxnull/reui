@@ -7,3 +7,4 @@ export Switch from './Switch';
 export { Tabs, Tab } from './Tabs';
 export Panel from './Panel';
 export PageWrapper from './PageWrapper';
+export Header from './Header';
