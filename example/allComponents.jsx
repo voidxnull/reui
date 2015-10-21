@@ -1,62 +1,72 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReUI from '../src/ReUI';
+import Reui from '../src/Reui';
 
 import theme from '../themes/css';
 
 import './global.css';
 
-ReUI.setGlobalTheme(theme);
+Reui.setGlobalTheme(theme);
 
 let page = (
-  <ReUI.PageWrapper>
-    <ReUI.Panel title="Button">
+  <Reui.PageWrapper>
+    <Reui.Panel title="Button">
       <p>
-        <ReUI.Button title="Button xs" size="xs" />
+        <Reui.Button title="Button xs" size="xs" />
       </p>
       <p>
-        <ReUI.Button title="Button sm" size="sm" />
+        <Reui.Button title="Button sm" size="sm" />
       </p>
       <p>
-        <ReUI.Button title="Button md" size="md" />
+        <Reui.Button title="Button md" size="md" />
       </p>
       <p>
-        <ReUI.Button title="Button lg" size="lg" />
+        <Reui.Button title="Button lg" size="lg" />
       </p>
       <p>
-        <ReUI.Button title="Active Button" active />
+        <Reui.Button title="Active Button" active />
       </p>
       <p>
-        <ReUI.Button title="Disabled Button" disabled />
+        <Reui.Button title="Disabled Button" disabled />
       </p>
-    </ReUI.Panel>
-    <ReUI.Panel title="RadioButtonGroup">
-      <ReUI.RadioButtonGroup>
-        <ReUI.Button title="One" />
-        <ReUI.Button title="Two" />
-        <ReUI.Button title="Three" />
-        <ReUI.Button title="Four" />
-      </ReUI.RadioButtonGroup>
-    </ReUI.Panel>
-    <ReUI.Panel title="CheckButtonGroup">
-      <ReUI.CheckButtonGroup>
-        <ReUI.Button title="One" />
-        <ReUI.Button title="Two" />
-        <ReUI.Button title="Three" />
-        <ReUI.Button title="Four" />
-      </ReUI.CheckButtonGroup>
-    </ReUI.Panel>
-    <ReUI.Panel title="Tabs">
-      <ReUI.Tabs>
-        <ReUI.Tab title="One">
+    </Reui.Panel>
+    <Reui.Panel title="RadioButtonGroup">
+      <Reui.RadioButtonGroup>
+        <Reui.Button title="One" />
+        <Reui.Button title="Two" />
+        <Reui.Button title="Three" />
+        <Reui.Button title="Four" />
+      </Reui.RadioButtonGroup>
+    </Reui.Panel>
+    <Reui.Panel title="CheckButtonGroup">
+      <Reui.CheckButtonGroup>
+        <Reui.Button title="One" />
+        <Reui.Button title="Two" />
+        <Reui.Button title="Three" />
+        <Reui.Button title="Four" />
+      </Reui.CheckButtonGroup>
+    </Reui.Panel>
+    <Reui.Panel title="Tabs">
+      <Reui.Tabs>
+        <Reui.Tab title="One">
           1
-        </ReUI.Tab>
-        <ReUI.Tab title="Two">
+        </Reui.Tab>
+        <Reui.Tab title="Two">
           2
-        </ReUI.Tab>
-      </ReUI.Tabs>
-    </ReUI.Panel>
-  </ReUI.PageWrapper>
+        </Reui.Tab>
+      </Reui.Tabs>
+    </Reui.Panel>
+    <Reui.Panel title="Tabs">
+      <Reui.Tabs>
+        <Reui.Tab title="One">
+          1
+        </Reui.Tab>
+        <Reui.Tab title="Two">
+          2
+        </Reui.Tab>
+      </Reui.Tabs>
+    </Reui.Panel>
+  </Reui.PageWrapper>
 );
 
 ReactDOM.render(

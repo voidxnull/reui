@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import ReUI from 'ReUI';
+import Reui from 'Reui';
 
-describe('ReUI', () => {
+describe('Reui', () => {
   describe('.setGlobalTheme', () => {
     before(() => {
       global.oldTheme = Button.defaultTheme;
@@ -18,11 +18,11 @@ describe('ReUI', () => {
         buttonDisabled: 'testButtonDisabled'
       };
 
-      ReUI.setGlobalTheme({
+      Reui.setGlobalTheme({
         Button: theme
       });
 
-      expect(ReUI.Button.defaultTheme).to.deep.equal(theme);
+      expect(Reui.Button.defaultTheme).to.deep.equal(theme);
     });
   });
 });

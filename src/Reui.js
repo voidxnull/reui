@@ -1,6 +1,6 @@
 import * as components from './components';
 
-var ReUI = {
+var Reui = {
   setGlobalTheme: function (theme) {
     Object.keys(components).forEach(c => {
       if (theme.hasOwnProperty(c)) {
@@ -10,10 +10,10 @@ var ReUI = {
   }
 };
 
-// Reexport components as ReUI[component]
+// Reexport components as Reui[component]
 Object.keys(components).forEach(c => {
-  ReUI[c] = components[c];
+  Reui[c] = components[c];
 });
 
 export * from './components';
-export default ReUI;
+export default Reui;
