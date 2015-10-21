@@ -5,18 +5,20 @@ import BaseComponent from './BaseComponent';
 export default class ProgressBar extends BaseComponent {
   static propTypes = {
     value: React.PropTypes.number.isRequired,
-    of: React.PropTypes.number
+    of: React.PropTypes.number,
+    showCaption: React.PropTypes.bool
   };
 
   static defaultProps = {
     value: 0,
-    of: 100
+    of: 100,
+    showCaption: false
   };
 
   static defaultTheme = {
-    progressBar: 'reui-progress',
-    bar: 'reui-progress__bar',
-    caption: 'reui-progress__caption'
+    progressBarContainer: 'reui-progress',
+    progressBar: 'reui-progress__bar',
+    progressBarCaption: 'reui-progress__caption'
   };
 
   render() {
@@ -26,9 +28,13 @@ export default class ProgressBar extends BaseComponent {
     };
 
     return (
-      <div {...theme(1, 'progressBar')}>
-        <div {...theme(2, 'caption')}>{this.props.value}/{this.props.of}</div>
-        <div {...theme(3, 'bar')} style={style} />
+      <div {...theme(1, 'progressBarContainer')}>
+        {
+          (this.props.showCaption)
+            ? <div {...theme(2, 'progressBarCaption')}>{this.props.value}/{this.props.of}</div>
+            : null
+        }
+        <div {...theme(3, 'progressBar')} style={style} />
       </div>
     );
   }

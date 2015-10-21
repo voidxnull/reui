@@ -3,5 +3,6 @@ export default {
   ButtonGroup: require('./ButtonGroup.css'),
   Panel: require('./Panel.css'),
   Tabs: require('./Tabs.css'),
-  PageWrapper: require('./PageWrapper.css')
+  PageWrapper: require('./PageWrapper.css'),
+  ProgressBar: require('./ProgressBar.css')
 }

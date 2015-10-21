@@ -1,0 +1,21 @@
+.progressBarContainer {
+    position: relative;
+    padding: 2px;
+    border: 1px solid #e7e7e7;
+    border-radius: 5px;
+}
+
+.progressBar {
+    height: 1.5em;
+    background-color: #7fd6aa;
+    border-radius: 5px;
+}
+
+.progressBarCaption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    font-size: 0.8rem;
+    text-align: center;
+}
