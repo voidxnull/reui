@@ -56,15 +56,9 @@ let page = (
         </Reui.Tab>
       </Reui.Tabs>
     </Reui.Panel>
-    <Reui.Panel title="Tabs">
-      <Reui.Tabs>
-        <Reui.Tab title="One">
-          1
-        </Reui.Tab>
-        <Reui.Tab title="Two">
-          2
-        </Reui.Tab>
-      </Reui.Tabs>
+    <Reui.Panel title="ProgressBar">
+      <Reui.ProgressBar value={20} />
+      <Reui.ProgressBar value={80} showCaption />
     </Reui.Panel>
   </Reui.PageWrapper>
 );
