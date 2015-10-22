@@ -4,11 +4,11 @@ import Reui from 'Reui';
 describe('Reui', () => {
   describe('.setGlobalTheme', () => {
     before(() => {
-      global.oldTheme = Button.defaultTheme;
+      global.oldTheme = Reui.Button.defaultTheme;
     });
 
     after(() => {
-      Button.defaultTheme = global.oldTheme;
+      Reui.Button.defaultTheme = global.oldTheme;
     });
 
     it('sets specified themes', () => {
