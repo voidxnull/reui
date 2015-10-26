@@ -1,8 +1,8 @@
 export default {
-  Button: require('./Button.css'),
-  ButtonGroup: require('./ButtonGroup.css'),
-  Panel: require('./Panel.css'),
-  Tabs: require('./Tabs.css'),
-  PageWrapper: require('./PageWrapper.css'),
-  ProgressBar: require('./ProgressBar.css')
+  Button: require('./Button.scss'),
+  ButtonGroup: require('./ButtonGroup.scss'),
+  Panel: require('./Panel.scss'),
+  Tabs: require('./Tabs.scss'),
+  PageWrapper: require('./PageWrapper.scss'),
+  ProgressBar: require('./ProgressBar.scss')
 }

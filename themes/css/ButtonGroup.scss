@@ -1,5 +1,7 @@
+@import './Button';
+
 .button {
-    composes: button from './Button.css';
+    @extend .button;
     border-radius: 0;
 }
 

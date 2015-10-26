@@ -28,7 +28,9 @@
     "mocha": "^2.3.3",
     "mocha-jsdom": "^1.0.0",
     "node-libs-browser": "^0.5.2",
+    "node-sass": "^3.4.0",
     "react-addons-test-utils": "^0.14.0",
+    "sass-loader": "^3.1.1",
     "style-loader": "^0.12.4",
     "webpack": "^1.12.1",
     "webpack-dev-server": "^1.11.0"
