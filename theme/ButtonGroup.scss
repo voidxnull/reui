@@ -5,14 +5,7 @@
     border-radius: 0;
 }
 
-
-.buttonActive {
-    background-color: #f4f4f4;
-}
-
-.buttonDisabled {
-    color: gray;
-}
+// .buttonActive and .buttonDisabled are inherited from Button
 
 .button:not(:first-child) {
     border-left-color: transparent;
