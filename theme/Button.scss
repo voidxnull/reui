@@ -1,14 +1,53 @@
+@import './colors';
+
 .button {
     padding: 0.5em 1em;
-    background-color: white;
-    border: 1px solid #e7e7e7;
-    border-radius: 5px;
     cursor: pointer;
     font-family: "PT Sans", sans-serif;
+    border-radius: 5px;
+    border: 1px solid transparent;
 }
 
-.button:hover {
+// Colors
+.buttonDefault {
+    background-color: white;
+    border-color: $border-color;
+    color: $text-color;
+}
+
+.buttonPrimary {
+    background-color: $primary-color;
+    color: white;
+}
+
+.buttonSuccess {
+    background-color: $success-color;
+    color: white;
+}
+
+.buttonWarning {
+    background-color: $warning-color;
+    color: white;
+}
+
+.buttonDanger {
+    background-color: $danger-color;
+    color: white;
+}
+
+// States
+.buttonDisabled {
     background-color: #EEE;
+    color: gray;
+    cursor: not-allowed;
+}
+
+.buttonActive {
+    background-color: lighten($border-color, 2%);
+}
+
+.button:not(.buttonDisabled):hover {
+    background-color: darken($border-color, 2%);
 }
 
 .button:focus {
@@ -19,8 +58,10 @@
     background-color: #DDD;
 }
 
+// Sizes
 .buttonXs {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+    padding: 0.3em;
 }
 
 .buttonSm {
@@ -35,12 +76,3 @@
     font-size: 1.2rem;
 }
 
-.buttonDisabled {
-    background-color: #EEE;
-    color: gray;
-    cursor: not-allowed;
-}
-
-.buttonActive {
-    background-color: #f4f4f4;
-}

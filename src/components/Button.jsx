@@ -11,7 +11,8 @@ export default class Button extends React.Component {
     active: React.PropTypes.bool,
     title: React.PropTypes.string,
     theme: React.PropTypes.object,
-    size: React.PropTypes.oneOf(['xs', 'sm', 'md', 'lg'])
+    size: React.PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+    color: React.PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'danger'])
   };
 
   static defaultProps = {
@@ -33,8 +34,8 @@ export default class Button extends React.Component {
   };
 
   render() {
-    const theme = this._selectTheme(getTheme(this));
-    const { title, children, ...otherProps } = this.props;
+    let theme = this._selectTheme(getTheme(this));
+    let { title, children, ...otherProps } = this.props;
 
     return (
       <button {...otherProps} {...theme}>
@@ -46,25 +47,33 @@ export default class Button extends React.Component {
 
   _selectTheme(theme) {
     let size = this._selectThemeIdBySize();
+    let color = this._selectThemeIdByColor();
 
     if (this.props.disabled) {
-      return theme(1, 'button', 'buttonDisabled', size);
+      return theme(1, 'button', 'buttonDisabled', size, color);
     } else if (this.props.active) {
-      return theme(1, 'button', 'buttonActive', size);
+      return theme(1, 'button', 'buttonActive', size, color);
     } else {
-      return theme(1, 'button', size);
+      return theme(1, 'button', size, color);
     }
   }
 
   _selectThemeIdBySize() {
-    if (this.props.size === 'xs') {
-      return 'buttonXs';
-    } else if (this.props.size === 'sm') {
-      return 'buttonSm';
-    } else if (this.props.size === 'lg') {
-      return 'buttonLg';
-    } else {
-      return 'buttonMd';
+    switch (this.props.size) {
+      case 'xs': return 'buttonXs'; break;
+      case 'sm': return 'buttonSm'; break;
+      case 'lg': return 'buttonLg'; break;
+      default: return 'buttonMd';
+    }
+  }
+
+  _selectThemeIdByColor() {
+    switch (this.props.color) {
+      case 'primary': return 'buttonPrimary'; break;
+      case 'success': return 'buttonSuccess'; break;
+      case 'warning': return 'buttonWarning'; break;
+      case 'danger': return 'buttonDanger'; break;
+      default: return 'buttonDefault';
     }
   }
 }
