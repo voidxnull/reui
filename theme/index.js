@@ -4,5 +4,6 @@ export default {
   Panel: require('./Panel.scss'),
   Tabs: require('./Tabs.scss'),
   PageWrapper: require('./PageWrapper.scss'),
-  ProgressBar: require('./ProgressBar.scss')
+  ProgressBar: require('./ProgressBar.scss'),
+  Section: require('./Section.scss')
 }
