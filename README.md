@@ -1,4 +1,5 @@
-# Reui
+
+# ![Reui](./example/Logo.svg)
 A collection of themeable components.
 
 ### WARNING
@@ -16,7 +17,7 @@ npm install --save reui
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Reui from 'reui';
-import defaultTheme from 'reui/themes/css';
+import defaultTheme from 'reui/theme';
 
 Reui.setGlobalTheme(defaultTheme);
 
@@ -29,7 +30,7 @@ ReactDOM.render(
 
 ```
 
-## Create and apply themes
+## Creating and applying themes
 Reui uses react-themeable under the hood so you can use jss, Radium, React Style, css-modules or plain classes to describe your theme.
 
 ### Create
@@ -53,7 +54,7 @@ var theme = {
   ...
 }
 ```
-Then the ```Button``` component would be rendered as
+Then the ```Button``` component will be rendered as
 ```html
 <button class="button"></button>
 ```
@@ -65,7 +66,7 @@ or
 ```html
 <button class="button active"></button>
 ```
-See more in `themes/`
+
 
 ### Apply
 You can apply a theme globally:
