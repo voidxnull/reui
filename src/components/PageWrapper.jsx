@@ -1,14 +1,13 @@
 import React from 'react';
-import BaseComponent from './BaseComponent';
-import themeable from 'react-themeable';
+import { getTheme } from '../utils';
 
-export default class PageWrapper extends BaseComponent {
+export default class PageWrapper extends React.Component {
   static defaultTheme = {
     pageWrapper: 'reui-page-wrapper'
   };
 
   render() {
-    const theme = themeable(this._mixTheme());
+    const theme = getTheme(this);
 
     return (
       <div {...theme(1, 'pageWrapper')}>

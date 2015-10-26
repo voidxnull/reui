@@ -1,8 +1,7 @@
 import React from 'react';
-import BaseComponent from './BaseComponent';
-import themeable from 'react-themeable';
+import { getTheme } from '../utils';
 
-export default class Panel extends BaseComponent {
+export default class Panel extends React.Component {
   static propTypes = {
     propTypes: React.PropTypes.string
   };
@@ -18,7 +17,7 @@ export default class Panel extends BaseComponent {
   };
 
   render() {
-    const theme = themeable(this._mixTheme());
+    const theme = getTheme(this);
     const heading = (this.props.title.length)
                     ? <div {...theme(2, 'panelHeading')}>{this.props.title}</div>
                     : null;

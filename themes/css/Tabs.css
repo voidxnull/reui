@@ -13,7 +13,6 @@
 }
 
 .menuItemActive {
-    composes: menuItem;
     background-color: white;
     border-color: #EEE;
     border-top-left-radius: 5px;

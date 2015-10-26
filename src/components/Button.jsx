@@ -1,12 +1,11 @@
 import React from 'react';
-import BaseComponent from './BaseComponent';
-import themeable from 'react-themeable';
+import { getTheme } from '../utils';
 
 /**
  * A universal button component.
  * Can be used as a switch (using props.active).
  */
-export default class Button extends BaseComponent {
+export default class Button extends React.Component {
   static propTypes = {
     disabled: React.PropTypes.bool,
     active: React.PropTypes.bool,
@@ -34,7 +33,7 @@ export default class Button extends BaseComponent {
   };
 
   render() {
-    const theme = this._getTheme(themeable(this._mixTheme()));
+    const theme = this._selectTheme(getTheme(this));
     const { title, children, ...otherProps } = this.props;
 
     return (
@@ -45,8 +44,8 @@ export default class Button extends BaseComponent {
     );
   }
 
-  _getTheme(theme) {
-    let size = this._getThemeIdBySize();
+  _selectTheme(theme) {
+    let size = this._selectThemeIdBySize();
 
     if (this.props.disabled) {
       return theme(1, 'button', 'buttonDisabled', size);
@@ -57,7 +56,7 @@ export default class Button extends BaseComponent {
     }
   }
 
-  _getThemeIdBySize() {
+  _selectThemeIdBySize() {
     if (this.props.size === 'xs') {
       return 'buttonXs';
     } else if (this.props.size === 'sm') {

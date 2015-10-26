@@ -1,10 +1,9 @@
 import React from 'react';
-import BaseComponent from './BaseComponent';
 import ButtonGroup from './ButtonGroup';
 import Button from './Button';
 
-
-export default class RadioButtonGroup extends BaseComponent {
+// TODO: Implement theming
+export default class RadioButtonGroup extends React.Component {
   static propTypes = {
     deselectable: React.PropTypes.bool,
     onChange: React.PropTypes.func

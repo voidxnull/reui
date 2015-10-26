@@ -1,8 +1,7 @@
 import React from 'react';
-import themeable from 'react-themeable';
-import BaseComponent from './BaseComponent';
+import { getTheme } from '../utils';
 
-export default class Switch extends BaseComponent {
+export default class Switch extends React.Component {
   static propTypes = {
     caption: React.PropTypes.string,
     checked: React.PropTypes.bool,
@@ -19,7 +18,7 @@ export default class Switch extends BaseComponent {
     switch: 'reui-switch',
     handleWrapper: 'reui-switch__handle-wrapper',
     handle: 'reui-switch__handle',
-    handleChecked: 'reui-switch__handle reui-switch__handle--checked'
+    handleChecked: 'reui-switch__handle--checked'
   };
 
   constructor(props) {
@@ -31,16 +30,12 @@ export default class Switch extends BaseComponent {
   }
 
   render() {
-    const theme = themeable(this._mixTheme());
-
-    var handleTheme = (this.state.checked)
-                      ? theme(2, 'handleChecked')
-                      : theme(3, 'handle');
+    const theme = getTheme(this);
 
     return (
       <div {...theme(1, 'switch')} onClick={this._onClick.bind(this)}>
         <div {...theme(1, 'handleWrapper')}>
-          <div {...handleTheme} />
+          <div {...theme(3, 'handle', this.props.checked && 'handleChecked')} />
         </div>
       </div>
     );

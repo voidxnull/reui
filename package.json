@@ -11,7 +11,7 @@
     "test:watch": "npm run test -- --watch"
   },
   "dependencies": {
-    "babel-runtime": "^5.8.20",
+    "object-assign": "^4.0.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-themeable": "^1.0.1"

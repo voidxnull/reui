@@ -1,11 +1,10 @@
 import React from 'react';
-import themeable from 'react-themeable';
-import BaseComponent from './BaseComponent';
+import { getRawTheme, getTheme } from '../utils';
 
 /**
  *  Tabs
  */
-export class Tabs extends BaseComponent {
+export class Tabs extends React.Component {
   constructor(props) {
     super(props);
 
@@ -19,11 +18,12 @@ export class Tabs extends BaseComponent {
     tab: 'reui-tabs__tab',
     menu: 'reui-tabs__menu',
     menuItem: 'reui-tabs__menu__item',
-    menuItemActive: 'reui-tabs__menu__item reui-tabs__menu__item--active'
+    menuItemActive: 'reui-tabs__menu__item--active'
   };
 
   render() {
-    const theme = themeable(this._mixTheme());
+    const rawTheme = getRawTheme(this);
+    const theme = getTheme(this);
     const menuItems = React.Children.map(this.props.children, c => c.props.title);
 
     return (
@@ -31,8 +31,8 @@ export class Tabs extends BaseComponent {
         <Menu items={menuItems}
               onClick={this._onClick.bind(this)}
               activeItem={this.state.activeTab}
-              theme={this._mixTheme()} />
-        {this._renderTabs()}
+              theme={rawTheme} />
+        {this._renderTabs(rawTheme)}
       </div>
     );
   }
@@ -43,13 +43,13 @@ export class Tabs extends BaseComponent {
     });
   }
 
-  _renderTabs() {
+  _renderTabs(rawTheme) {
     return React.Children.map(this.props.children, (tab, i) => {
       const display = (this.state.activeTab === i)
                       ? 'block'
                       : 'none';
       const newTab = React.cloneElement(tab, {
-        theme: this._mixTheme()
+        theme: rawTheme
       });
 
       return <div style={{display}} key={i}>{newTab}</div>
@@ -60,7 +60,7 @@ export class Tabs extends BaseComponent {
 /**
  *  Tab
  */
-export class Tab extends BaseComponent {
+export class Tab extends React.Component {
   static defaultProps = {
     title: 'No Title',
     classNames: Tabs.classNames
@@ -71,7 +71,8 @@ export class Tab extends BaseComponent {
   };
 
   render() {
-    const theme = themeable(this._mixTheme());
+    const theme = getTheme(this);
+
     return (
       <div {...theme(1, 'tab')}>
         {this.props.children}
@@ -83,7 +84,7 @@ export class Tab extends BaseComponent {
 /**
  *  Menu
  */
-class Menu extends BaseComponent {
+class Menu extends React.Component {
   static defaultProps = {
     items: [],
     activeItem: 0,
@@ -96,7 +97,7 @@ class Menu extends BaseComponent {
   };
 
   render() {
-    const theme = themeable(this._mixTheme());
+    const theme = getTheme(this);
     const items = this.props.items.map((item, i) => {
       return <MenuItem id={i}
                        title={item}
@@ -117,7 +118,7 @@ class Menu extends BaseComponent {
 /**
  *  Menu Item
  */
-class MenuItem extends BaseComponent {
+class MenuItem extends React.Component {
   static defaultProps = {
     id: 0,
     title: '',
@@ -132,10 +133,8 @@ class MenuItem extends BaseComponent {
   };
 
   render() {
-    const theme = themeable(this._mixTheme());
-    const itemTheme = (this.props.active)
-                      ? theme(1, 'menuItemActive')
-                      : theme(2, 'menuItem');
+    const theme = getTheme(this);
+    const itemTheme = theme(1, 'menuItem', this.props.active && 'menuItemActive');
 
     return (
       <div {...itemTheme} onClick={this._onClick.bind(this)}>

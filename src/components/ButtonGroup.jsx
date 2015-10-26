@@ -1,9 +1,8 @@
 import React from 'react';
-import themeable from 'react-themeable';
-import BaseComponent from './BaseComponent';
+import { getRawTheme, getTheme } from '../utils';
 import Button from './Button';
 
-export default class ButtonGroup extends BaseComponent {
+export default class ButtonGroup extends React.Component {
   static propTypes = {
     activeButtons: React.PropTypes.arrayOf(React.PropTypes.number)
   };
@@ -20,7 +19,7 @@ export default class ButtonGroup extends BaseComponent {
   };
 
   render() {
-    const theme = themeable(this._mixTheme());
+    const theme = getTheme(this);
 
     return (
       <div {...theme(1, 'buttonGroup')}>
@@ -33,7 +32,7 @@ export default class ButtonGroup extends BaseComponent {
     return React.Children.map(this.props.children, (child, i) => {
       return React.cloneElement(child, {
         active: this._isButtonActive(i),
-        theme: this._mixTheme()
+        theme: getRawTheme(this)
       });
     });
   }

@@ -1,10 +1,9 @@
 import React from 'react';
-import themeable from 'react-themeable';
-import BaseComponent from './BaseComponent';
 import ButtonGroup from './ButtonGroup';
 import Button from './Button';
 
-export default class CheckButtonGroup extends BaseComponent {
+// TODO: Implement theming
+export default class CheckButtonGroup extends React.Component {
   static propTypes = {
     onChange: React.PropTypes.func
   };

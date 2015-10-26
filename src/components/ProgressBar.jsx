@@ -1,8 +1,7 @@
 import React from 'react';
-import themeable from 'react-themeable';
-import BaseComponent from './BaseComponent';
+import { getTheme } from '../utils';
 
-export default class ProgressBar extends BaseComponent {
+export default class ProgressBar extends React.Component {
   static propTypes = {
     value: React.PropTypes.number.isRequired,
     of: React.PropTypes.number,
@@ -22,7 +21,7 @@ export default class ProgressBar extends BaseComponent {
   };
 
   render() {
-    const theme = themeable(this._mixTheme());
+    const theme = getTheme(this);
     const style = {
       width: `${this._calculatePercent()}%`
     };
