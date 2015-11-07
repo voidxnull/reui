@@ -1,6 +1,6 @@
 
-# ![Reui](./example/Logo.svg)
-A collection of themeable components.
+# Reui
+A collection of themeable React components.
 
 ### WARNING
 **The library is in early stage of development**
@@ -17,6 +17,8 @@ npm install --save reui
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Reui from 'reui';
+
+// Requires Webpack
 import defaultTheme from 'reui/theme';
 
 Reui.setGlobalTheme(defaultTheme);
@@ -54,19 +56,10 @@ var theme = {
   ...
 }
 ```
-Then the ```Button``` component will be rendered as
-```html
-<button class="button"></button>
-```
-or
+Then the ```<Button disabled />``` component will be rendered as
 ```html
 <button class="button disabled" disabled></button>
 ```
-or
-```html
-<button class="button active"></button>
-```
-
 
 ### Apply
 You can apply a theme globally:
@@ -79,4 +72,4 @@ or directly to a component:
 <Button theme={theme.Button} />
 ```
 
-A theme passed as a `theme` prop will be merged with the global theme.
+A theme passed as the `theme` prop will be merged with the global theme.
