@@ -16,7 +16,10 @@ npm install --save reui
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
+// Import the compiled version
 import Reui from 'reui';
+// or es6 version
+import Reui from 'reui/es6';
 
 // Requires Webpack
 import defaultTheme from 'reui/theme';
@@ -56,7 +59,7 @@ var theme = {
   ...
 }
 ```
-Then the ```<Button disabled />``` component will be rendered as
+Then ```<Button disabled />``` will be rendered as
 ```html
 <button class="button disabled" disabled></button>
 ```
