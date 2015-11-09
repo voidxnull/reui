@@ -1,61 +1,43 @@
 @import './colors';
 
+@mixin button($class, $fg, $bg, $fg-hover, $bg-hover, $fg-active, $bg-active, $fg-disabled, $bg-disabled) {
+  .#{$class} {
+      background-color: $bg;
+      color: $fg;
+  }
+  .#{$class}:hover {
+    background-color: $bg-hover;
+    color: $fg-hover;
+  }
+  .#{$class}.buttonActive,
+  .#{$class}:active {
+    background-color: $bg-active;
+    color: $fg-active;
+  }
+  .#{$class}.buttonDisabled,
+  .#{$class}:disabled {
+    background-color: $bg-disabled;
+    color: $fg-disabled;
+  }
+}
+
 .button {
     padding: 0.5em 1em;
     cursor: pointer;
-    font-family: "PT Sans", sans-serif;
+    font-family: inherit;
     border-radius: 5px;
     border: 1px solid transparent;
 }
 
-// Colors
-.buttonDefault {
-    background-color: white;
-    border-color: $border-color;
-    color: $text-color;
-}
-
-.buttonPrimary {
-    background-color: $primary-color;
-    color: white;
-}
-
-.buttonSuccess {
-    background-color: $success-color;
-    color: white;
-}
-
-.buttonWarning {
-    background-color: $warning-color;
-    color: white;
-}
-
-.buttonDanger {
-    background-color: $danger-color;
-    color: white;
-}
-
-// States
-.buttonDisabled {
+.buttonDisabled,
+.button:disabled {
     background-color: #EEE;
     color: gray;
     cursor: not-allowed;
 }
 
-.buttonActive {
-    background-color: lighten($border-color, 2%);
-}
-
-.button:not(.buttonDisabled):hover {
-    background-color: darken($border-color, 2%);
-}
-
 .button:focus {
     outline: none;
-}
-
-.button:not(.buttonDisabled):active {
-    background-color: #DDD;
 }
 
 // Sizes
@@ -76,3 +58,39 @@
     font-size: 1.2rem;
 }
 
+// Colors
+$disabled-fg-light: darken(white, 20%);
+$disabled-fg-dark: gray;
+
+@include button("buttonDefault",
+                $text-color, white,
+                $text-color, darken(white, 10%),
+                $text-color, darken(white, 15%),
+                $disabled-fg-dark, #EEE);
+.buttonDefault {
+  border-color: $border-color;
+}
+
+@include button("buttonPrimary",
+                white, $primary-color,
+                white, lighten($primary-color, 10%),
+                white, darken($primary-color, 10%),
+                $disabled-fg-light, desaturate($primary-color, 30%));
+
+@include button("buttonSuccess",
+                white, $success-color,
+                white, lighten($success-color, 10%),
+                white, darken($success-color, 10%),
+                $disabled-fg-light, desaturate($success-color, 30%));
+
+@include button("buttonWarning",
+                white, $warning-color,
+                white, lighten($warning-color, 10%),
+                white, darken($warning-color, 10%),
+                $disabled-fg-light, desaturate($warning-color, 30%));
+
+@include button("buttonDanger",
+                white, $danger-color,
+                white, lighten($danger-color, 10%),
+                white, darken($danger-color, 10%),
+                $disabled-fg-light, desaturate($danger-color, 30%));

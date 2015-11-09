@@ -22,10 +22,27 @@ export default (props) => {
         </Reui.Section>
 
         <Reui.Section level={3} title="Button Colors">
-          <Reui.Button title="Primary" color="primary" />
-          <Reui.Button title="Success" color="success" />
-          <Reui.Button title="Warning" color="warning" />
-          <Reui.Button title="Danger" color="danger" />
+          <Reui.ButtonGroup>
+            <Reui.Button title="Default" color="default" />
+            <Reui.Button title="Primary" color="primary" />
+            <Reui.Button title="Success" color="success" />
+            <Reui.Button title="Warning" color="warning" />
+            <Reui.Button title="Danger" color="danger" />
+          </Reui.ButtonGroup>
+          <Reui.ButtonGroup activeButtons={[0, 1, 2, 3, 4, 5]}>
+            <Reui.Button title="Default" color="default" />
+            <Reui.Button title="Primary" color="primary" />
+            <Reui.Button title="Success" color="success" />
+            <Reui.Button title="Warning" color="warning" />
+            <Reui.Button title="Danger" color="danger" />
+          </Reui.ButtonGroup>
+          <Reui.ButtonGroup>
+            <Reui.Button title="Default" color="default" disabled />
+            <Reui.Button title="Primary" color="primary" disabled />
+            <Reui.Button title="Success" color="success" disabled />
+            <Reui.Button title="Warning" color="warning" disabled />
+            <Reui.Button title="Danger" color="danger" disabled />
+          </Reui.ButtonGroup>
         </Reui.Section>
       </Reui.Panel>
       <Reui.Panel title="RadioButtonGroup">
