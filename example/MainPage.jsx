@@ -1,10 +1,11 @@
 import React from 'react';
 import Logo from './Logo.svg';
 import Reui from '../src/Reui';
+import PageWrapper from './PageWrapper';
 
 export default (props) => {
   return (
-    <Reui.PageWrapper>
+    <PageWrapper>
       <header>
         <img src={Logo} alt="Reui"/>
       </header>
@@ -29,6 +30,7 @@ export default (props) => {
             <Reui.Button title="Warning" color="warning" />
             <Reui.Button title="Danger" color="danger" />
           </Reui.ButtonGroup>
+
           <Reui.ButtonGroup activeButtons={[0, 1, 2, 3, 4, 5]}>
             <Reui.Button title="Default" color="default" />
             <Reui.Button title="Primary" color="primary" />
@@ -36,6 +38,7 @@ export default (props) => {
             <Reui.Button title="Warning" color="warning" />
             <Reui.Button title="Danger" color="danger" />
           </Reui.ButtonGroup>
+
           <Reui.ButtonGroup>
             <Reui.Button title="Default" color="default" disabled />
             <Reui.Button title="Primary" color="primary" disabled />
@@ -75,6 +78,6 @@ export default (props) => {
         <Reui.ProgressBar value={20} />
         <Reui.ProgressBar value={80} showCaption />
       </Reui.Panel>
-    </Reui.PageWrapper>
+    </PageWrapper>
   );
 }
