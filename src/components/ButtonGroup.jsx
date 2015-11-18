@@ -1,4 +1,5 @@
 import React from 'react';
+import assign from 'object-assign';
 import { getRawTheme, getTheme } from '../utils';
 import Button from './Button';
 
@@ -11,12 +12,12 @@ export default class ButtonGroup extends React.Component {
     activeButtons: []
   };
 
-  static defaultTheme = {
-    buttonGroup: 'reui-button-group',
-    button: '',
-    buttonDisabled: '',
-    buttonActive: ''
-  };
+  static defaultTheme = assign(Button.defaultTheme, {
+    buttonGroup: 'reui-button-group'
+    //button: '',
+    //buttonDisabled: '',
+    //buttonActive: ''
+  });
 
   render() {
     const theme = getTheme(this);
