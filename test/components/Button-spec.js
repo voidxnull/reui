@@ -26,21 +26,6 @@ describe('Button', () => {
   });
 
   describe('states', () => {
-    before(() => {
-      // Set a global theme for Button
-      global.oldTheme = Button.defaultTheme;
-      Button.defaultTheme = {
-        button: 'button',
-        buttonDisabled: 'buttonDisabled',
-        buttonActive: 'buttonActive'
-      };
-    });
-
-    after(() => {
-      // Restore the global theme
-      Button.defaultTheme = global.oldTheme;
-    });
-
     it('correctly renders disabled state', () => {
       let button = TestUtils.renderIntoDocument(
         <Button title="Test Button" disabled />
@@ -48,7 +33,7 @@ describe('Button', () => {
       let domButton = TestUtils.findRenderedDOMComponentWithTag(button, 'button');
 
       expect(domButton.disabled).to.be.true;
-      expect(domButton.className).to.be.contain('buttonDisabled');
+      expect(domButton.className).to.contain('reui-button--disabled');
     });
 
     it('correctly renders active state', () => {
@@ -57,7 +42,7 @@ describe('Button', () => {
       );
       let domButton = TestUtils.findRenderedDOMComponentWithTag(button, 'button');
 
-      expect(domButton.className).to.be.contain('buttonActive');
+      expect(domButton.className).to.contain('reui-button--active');
     });
   });
 });
