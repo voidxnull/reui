@@ -4,7 +4,6 @@ import Reui from '../src/Reui';
 import MainPage from './MainPage';
 
 import theme from '../theme';
-import Logo from './Logo.svg';
 import './global.css';
 
 Reui.setGlobalTheme(theme);

@@ -1,14 +1,10 @@
 import React from 'react';
-import Logo from './Logo.svg';
 import Reui from '../src/Reui';
 import PageWrapper from './PageWrapper';
 
 export default (props) => {
   return (
     <PageWrapper>
-      <header>
-        <img src={Logo} alt="Reui"/>
-      </header>
       <Reui.Panel title="Button">
         <Reui.Section level={3} title="Button Sizes">
           <Reui.Button title="Button xs" size="xs" />
