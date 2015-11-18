@@ -1,19 +1,25 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import TestUtils from 'react/lib/ReactTestUtils';
 import { expect } from 'chai';
 import Button from 'components/Button';
 import CheckButtonGroup from 'components/CheckButtonGroup.jsx';
 
 describe('CheckButtonGroup', () => {
-  it('renders children', () => {
-    var group = TestUtils.renderIntoDocument(
+  it('activates buttons on click', () => {
+    let group = TestUtils.renderIntoDocument(
       <CheckButtonGroup>
-        <Button id="button-1" title="1" />
-        <Button id="button-2" title="2" />
+        <Button title="1" />
+        <Button title="2" />
       </CheckButtonGroup>
     );
 
-    var element = TestUtils.findRenderedDOMComponentWithClass(group, 'reui-button-group');
-    expect(TestUtils.scryRenderedDOMComponentsWithTag(group, 'button')).to.have.length(2);
+    let buttons = ReactDOM.findDOMNode(group).children;
+
+    TestUtils.Simulate.click(buttons[0]);
+    TestUtils.Simulate.click(buttons[1]);
+
+    expect(buttons[0].classList.contains('reui-button--active')).to.be.true;
+    expect(buttons[1].classList.contains('reui-button--active')).to.be.true;
   });
 });
