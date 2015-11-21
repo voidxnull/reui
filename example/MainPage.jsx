@@ -74,6 +74,11 @@ export default (props) => {
         <Reui.ProgressBar value={20} />
         <Reui.ProgressBar value={80} showCaption />
       </Reui.Panel>
+      <Reui.Panel>
+        <Reui.TextInput placeholder="One line text input" block />
+        <Reui.TextInput type="password" placeholder="Password input" block />
+        <Reui.TextInput type="textarea" placeholder="Text area" block />
+      </Reui.Panel>
     </PageWrapper>
   );
 }

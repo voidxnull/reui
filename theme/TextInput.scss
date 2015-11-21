@@ -1,0 +1,23 @@
+@import 'colors';
+@import 'fonts';
+
+.textInput {
+    padding: .5em 1em;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    outline: none;
+    font: $primary-font;
+
+    &:focus {
+        box-shadow: 0 0 0 2px transparentize($success-color, 0.8);
+    }
+}
+
+.textInputBlock {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.textInputWrapper {
+
+}
