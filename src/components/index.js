@@ -9,3 +9,4 @@ export Panel from './Panel';
 export Header from './Header';
 export Section from './Section';
 export TextInput from './TextInput';
+export SuggestBox from './SuggestBox';

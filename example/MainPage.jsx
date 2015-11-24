@@ -1,6 +1,7 @@
 import React from 'react';
 import Reui from '../src/Reui';
 import PageWrapper from './PageWrapper';
+import SuggestBoxDemo from './SuggestBoxDemo';
 
 export default (props) => {
   return (
@@ -78,6 +79,7 @@ export default (props) => {
         <Reui.TextInput placeholder="One line text input" block />
         <Reui.TextInput type="password" placeholder="Password input" block />
         <Reui.TextInput type="textarea" placeholder="Text area" block />
+        <SuggestBoxDemo />
       </Reui.Panel>
     </PageWrapper>
   );
