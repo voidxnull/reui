@@ -1,25 +1,5 @@
 @import './colors';
-
-@mixin button($class, $fg, $bg, $fg-hover, $bg-hover, $fg-active, $bg-active, $fg-disabled, $bg-disabled) {
-  .#{$class} {
-      background-color: $bg;
-      color: $fg;
-  }
-  .#{$class}:hover {
-    background-color: $bg-hover;
-    color: $fg-hover;
-  }
-  .#{$class}.buttonActive,
-  .#{$class}:active {
-    background-color: $bg-active;
-    color: $fg-active;
-  }
-  .#{$class}.buttonDisabled,
-  .#{$class}:disabled {
-    background-color: $bg-disabled;
-    color: $fg-disabled;
-  }
-}
+@import './mixins';
 
 .button {
     padding: 0.5em 1em;
@@ -68,7 +48,7 @@ $disabled-fg-dark: gray;
                 $text-color, darken(white, 15%),
                 $disabled-fg-dark, #EEE);
 .buttonDefault {
-  border-color: $border-color;
+    border-color: $border-color;
 }
 
 @include button("buttonPrimary",

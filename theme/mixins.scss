@@ -1,0 +1,20 @@
+@mixin button($class, $fg, $bg, $fg-hover, $bg-hover, $fg-active, $bg-active, $fg-disabled, $bg-disabled) {
+    .#{$class} {
+        background-color: $bg;
+        color: $fg;
+    }
+    .#{$class}:hover {
+        background-color: $bg-hover;
+        color: $fg-hover;
+    }
+    .#{$class}.buttonActive,
+    .#{$class}:active {
+        background-color: $bg-active;
+        color: $fg-active;
+    }
+    .#{$class}.buttonDisabled,
+    .#{$class}:disabled {
+        background-color: $bg-disabled;
+        color: $fg-disabled;
+    }
+}
