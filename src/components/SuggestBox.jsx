@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import TextInput from './TextInput';
 
 class SuggestBoxWindow extends React.Component {
@@ -89,12 +90,12 @@ export default class SuggestBox extends React.Component {
   render() {
     return (
       <div className="suggestbox-wrapper">
-        <input ref="input"
-               className="suggestbox-input"
-               onFocus={this._onFocus.bind(this)}
-               onBlur={this._onBlur.bind(this)}
-               onChange={this._onChange.bind(this)}
-               onKeyDown={this._onKeyPress.bind(this)}/>
+        <TextInput ref={(c) => this.input = ReactDOM.findDOMNode(c)}
+                   className="suggestbox-input"
+                   onFocus={this._onFocus.bind(this)}
+                   onBlur={this._onBlur.bind(this)}
+                   onChange={this._onChange.bind(this)}
+                   onKeyDown={this._onKeyPress.bind(this)}/>
         <SuggestBoxWindow items={this.state.filteredItems}
                           hidden={this.state.windowHidden}
                           hoveredIndex={this.state.hoveredIndex}
@@ -107,7 +108,7 @@ export default class SuggestBox extends React.Component {
    * Called on focus and change of the input
    */
   _activate() {
-    let query = this.refs.input.value;
+    let query = this.input.value;
     let items = this.state.items;
 
     if (items && items.length) {
@@ -193,7 +194,7 @@ export default class SuggestBox extends React.Component {
    * Applies the item, calls the onSelect callback and hides the window
    */
   _select(item) {
-    this.refs.input.value = item;
+    this.input.value = item;
     this.props.onSelect(item);
     this.setState({windowHidden: true});
   }
