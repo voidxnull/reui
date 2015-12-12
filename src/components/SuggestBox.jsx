@@ -111,6 +111,7 @@ export default class SuggestBox extends React.Component {
                    onBlur={this._handleBlur.bind(this)}
                    onChange={this._handleChange.bind(this)}
                    onKeyDown={this._handleKeyPress.bind(this)}
+                   aria-expanded={!this.state.windowHidden}
                    theme={rawTheme} />
         <SuggestBoxWindow items={this.state.filteredItems}
                           hidden={this.state.windowHidden}

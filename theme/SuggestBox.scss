@@ -1,1 +1,21 @@
 @import './TextInput';
+@import './colors';
+
+.suggestBoxWrapper {
+    position: relative;
+}
+
+.suggestBoxWindow {
+    position: absolute;
+    width: $text-input-width;
+    background-color: white;
+    border: 1px solid $border-color;
+}
+
+.suggestBoxWindowLine {
+    padding: 5px;
+}
+
+.suggestBoxWindowLineActive {
+    background-color: $border-color;
+}

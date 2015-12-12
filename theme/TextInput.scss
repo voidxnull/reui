@@ -1,8 +1,11 @@
 @import 'colors';
 @import 'fonts';
 
+$text-input-width: 300px;
+
 .textInput {
     padding: .5em 1em;
+    width: $text-input-width;
     border: 1px solid $border-color;
     border-radius: 5px;
     outline: none;
@@ -10,6 +13,11 @@
 
     &:focus {
         box-shadow: 0 0 0 2px transparentize($success-color, 0.8);
+    }
+
+    &[aria-expanded="true"] {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
     }
 }
 
