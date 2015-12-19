@@ -2,7 +2,7 @@ import React from 'react';
 import Reui from '../src/Reui';
 
 export default (props) => {
-  var list = [
+  let listOfStrings = [
     'Kristopher Hopkins',
     'Dale Love',
     'Jessie Craig',
@@ -14,20 +14,26 @@ export default (props) => {
     'Doug Perkins',
     'Amelia Sherman'
   ];
+  
+  let listOfObjects = [
+    {id: 1, text: 'One'},
+    {id: 2, text: 'Two'},
+    {id: 3, text: 'Three'},
+  ];
 
   function onSelect(item) {
     console.log(item);
   }
 
-  function fetch(query, callback) {
+  function fetchStrings(query, callback) {
     console.log('Requesting ' + query);
 
     setTimeout(function () {
-      callback(list);
+      callback(listOfStrings);
     }, Math.random() * (600 - 200) + 200);
   }
 
-  function filter(items, query) {
+  function filterStrings(items, query) {
     return items.filter(function (item) {
       if (item.toLowerCase().indexOf(query.toLowerCase()) !== -1) {
         return true;
@@ -35,11 +41,35 @@ export default (props) => {
     });
   }
 
+  function fetchObjects(query, callback) {
+    console.log('Requesting ' + query);
+
+    setTimeout(function () {
+      callback(listOfObjects);
+    }, Math.random() * (600 - 200) + 200);
+  }
+
+  function filterObjects(items, query) {
+    return items.filter(function (item) {
+      if (item.text.toLowerCase().indexOf(query.toLowerCase()) !== -1) {
+        return true;
+      }
+    });
+  }
+
   return (
-      <Reui.SuggestBox fetch={fetch}
-                       filter={filter}
+    <div>
+      <Reui.SuggestBox fetch={fetchStrings}
+                       filter={filterStrings}
                        maxResults={5}
                        activateOnFocus={true}
                        onSelect={onSelect} />
+      <Reui.SuggestBox fetch={fetchObjects}
+                       filter={filterObjects}
+                       maxResults={5}
+                       activateOnFocus={true}
+                       renderItem={item => `${item.id}: ${item.text}`}
+                       onSelect={onSelect} />
+    </div>
   );
 }
