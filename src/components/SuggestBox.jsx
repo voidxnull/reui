@@ -5,18 +5,21 @@ import { getTheme, getRawTheme } from '../utils';
 
 class SuggestBoxWindow extends React.Component {
   static propTypes = {
-    items: PropTypes.array,
     hidden: PropTypes.bool,
+    items: PropTypes.array,
+    onClick: PropTypes.func,
+    onMouseEnter: PropTypes.func,
+    renderItem: PropTypes.func.isRequired,
     selectedIndex: PropTypes.number,
-    theme: PropTypes.object,
-    onClick: PropTypes.func
+    theme: PropTypes.object
   };
 
   static defaultProps = {
     items: [],
     hidden: true,
     selectedIndex: 0,
-    onClick: function () {}
+    onClick: (item) => {},
+    onMouseEnter: (item) => {}
   };
 
   static defaultTheme = {
@@ -25,18 +28,12 @@ class SuggestBoxWindow extends React.Component {
     suggestBoxWindowLineActive: 'reui-suggestbox__window__line--active'
   };
 
-  render() {
-    let theme = getTheme(this);
-    let style = {
-      display: (this.props.hidden) ? 'none' : 'block'
-    };
+  _handleClick(item) {
+    this.props.onClick(item);
+  }
 
-    return (
-      <div {...theme(2, 'suggestBoxWindow')}
-           style={style}>
-        {this._renderList()}
-      </div>
-    );
+  _handleMouseEnter(item, index) {
+    this.props.onMouseEnter(item, index);
   }
 
   _renderList() {
@@ -45,14 +42,28 @@ class SuggestBoxWindow extends React.Component {
       let selected = index === this.props.selectedIndex;
 
       return (
-        <div onMouseDown={this.props.onClick.bind(this)}
+        <div onMouseDown={this._handleClick.bind(this, item)}
+             onMouseEnter={this._handleMouseEnter.bind(this, item, index)}
              key={index}
-             data-item={JSON.stringify(item)}
              {...theme(index, 'suggestBoxWindowLine', selected && 'suggestBoxWindowLineActive')} >
-          {item}
+          {this.props.renderItem(item)}
         </div>
       );
     }, this);
+  }
+
+  render() {
+    let theme = getTheme(this);
+
+    if (this.props.hidden) {
+      return null;
+    }
+
+    return (
+      <div {...theme(2, 'suggestBoxWindow')}>
+        {this._renderList()}
+      </div>
+    );
   }
 }
 
@@ -64,21 +75,23 @@ class SuggestBoxWindow extends React.Component {
  */
 export default class SuggestBox extends React.Component {
   static propTypes = {
-    delay: PropTypes.number,
-    maxResults: PropTypes.number,
     activateOnFocus: PropTypes.bool,
+    delay: PropTypes.number,
     fetch: PropTypes.func,
     filter: PropTypes.func,
-    onSelect: PropTypes.func
+    maxResults: PropTypes.number,
+    onSelect: PropTypes.func,
+    renderItem: PropTypes.func
   };
 
   static defaultProps = {
-    delay: 300,
-    maxResults: 10,
     activateOnFocus: true,
+    delay: 300,
     fetch: () => [],
     filter: () => [],
-    onSelect: () => {}
+    maxResults: 10,
+    onSelect: () => {},
+    renderItem: (item) => item
   };
 
   static defaultTheme = {
@@ -98,28 +111,6 @@ export default class SuggestBox extends React.Component {
       selectedIndex: 0,
       windowHidden: true
     };
-  }
-
-  render() {
-    let rawTheme = getRawTheme(this);
-    let theme = getTheme(this);
-
-    return (
-      <div {...theme(1, 'suggestBoxWrapper')}>
-        <TextInput ref={(c) => this.input = ReactDOM.findDOMNode(c)}
-                   onFocus={this._handleFocus.bind(this)}
-                   onBlur={this._handleBlur.bind(this)}
-                   onChange={this._handleChange.bind(this)}
-                   onKeyDown={this._handleKeyPress.bind(this)}
-                   aria-expanded={!this.state.windowHidden}
-                   theme={rawTheme} />
-        <SuggestBoxWindow items={this.state.filteredItems}
-                          hidden={this.state.windowHidden}
-                          selectedIndex={this.state.selectedIndex}
-                          onClick={this._handleClickOnItem.bind(this)}
-                          theme={rawTheme} />
-      </div>
-    );
   }
 
   /**
@@ -154,14 +145,6 @@ export default class SuggestBox extends React.Component {
 
   _handleBlur(event) {
     this.setState({windowHidden: true});
-  }
-
-  /**
-   * Gets the clicked item's data and selects it.
-   */
-  _handleClickOnItem(event) {
-    let item = JSON.parse(event.target.getAttribute('data-item'));
-    this._select(item);
   }
 
   /**
@@ -212,7 +195,7 @@ export default class SuggestBox extends React.Component {
    * Applies the item, calls the onSelect callback and hides the window
    */
   _select(item) {
-    this.input.value = item;
+    this.input.value = this.props.renderItem(item);
     this.props.onSelect(item);
     this.setState({windowHidden: true});
   }
@@ -226,5 +209,35 @@ export default class SuggestBox extends React.Component {
   _filter(items, query) {
     return this.props.filter(items, query)
       .slice(0, this.props.maxResults);
+  }
+
+  _handleMouseEnter(item, index) {
+    this.setState({
+      selectedIndex: index
+    });
+  }
+
+  render() {
+    let rawTheme = getRawTheme(this);
+    let theme = getTheme(this);
+
+    return (
+      <div {...theme(1, 'suggestBoxWrapper')}>
+        <TextInput ref={(c) => this.input = ReactDOM.findDOMNode(c)}
+                   onFocus={this._handleFocus.bind(this)}
+                   onBlur={this._handleBlur.bind(this)}
+                   onChange={this._handleChange.bind(this)}
+                   onKeyDown={this._handleKeyPress.bind(this)}
+                   aria-expanded={!this.state.windowHidden}
+                   theme={rawTheme} />
+        <SuggestBoxWindow items={this.state.filteredItems}
+                          hidden={this.state.windowHidden}
+                          selectedIndex={this.state.selectedIndex}
+                          onClick={this._select.bind(this)}
+                          onMouseEnter={this._handleMouseEnter.bind(this)}
+                          renderItem={this.props.renderItem}
+                          theme={rawTheme} />
+      </div>
+    );
   }
 }
