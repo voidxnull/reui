@@ -13,7 +13,7 @@ npm install --save reui
 ```
 
 ### Usage
-```javascript
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 // Import the compiled version
@@ -71,7 +71,7 @@ Reui.setGlobalTheme(theme)
 ```
 
 or directly to a component:
-```javascript
+```jsx
 <Button theme={theme.Button} />
 ```
 
