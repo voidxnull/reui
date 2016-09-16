@@ -3,6 +3,8 @@
 
 A collection of themeable React components.
 
+[Documentation](https://voidxnull.gitbooks.io/reui-docs/content/)
+
 ### WARNING
 **The library is in early stage of development**
 
