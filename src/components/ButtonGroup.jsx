@@ -12,7 +12,7 @@ export default class ButtonGroup extends React.Component {
     activeButtons: [],
   };
 
-  static defaultTheme = assign(Button.defaultTheme, {
+  static defaultTheme = Object.assign(Button.defaultTheme, {
     buttonGroup: 'reui-button-group',
     //button: '',
     //buttonDisabled: '',

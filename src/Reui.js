@@ -5,8 +5,8 @@ const Reui = {
    * Sets default theme for each component.
    * @param theme {Object}
    */
-  setGlobalTheme: function (theme) {
-    Object.keys(components).forEach(c => {
+  setGlobalTheme(theme) {
+    Object.keys(components).forEach((c) => {
       if (theme.hasOwnProperty(c)) { // eslint-disable-line no-prototype-builtins
         components[c].defaultTheme = theme[c];
       }

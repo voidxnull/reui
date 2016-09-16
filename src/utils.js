@@ -1,13 +1,13 @@
-import assign from 'object-assign';
 import themeable from 'react-themeable';
 
+// TODO: Implement the theme system via decorators.
 /**
  * Mixes props.theme with the default theme
  * @param component {Object}
  * @returns theme object {Object}
  */
 export function getRawTheme(component) {
-  return assign(component.constructor.defaultTheme, component.props.theme);
+  return Object.assign(component.constructor.defaultTheme, component.props.theme);
 }
 
 /**
