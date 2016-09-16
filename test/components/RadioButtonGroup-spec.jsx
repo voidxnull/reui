@@ -6,19 +6,19 @@ import Button from 'components/Button';
 import RadioButtonGroup from 'components/RadioButtonGroup.jsx';
 
 function isButtonActive(button) {
-  return button.classList.contains('reui-button--active')
+  return button.classList.contains('reui-button--active');
 }
 
 describe('RadioButtonGroup', () => {
   it('activates a button on click and resets other buttons', () => {
-    let group = TestUtils.renderIntoDocument(
+    const group = TestUtils.renderIntoDocument(
       <RadioButtonGroup>
         <Button title="1" />
         <Button title="2" />
       </RadioButtonGroup>
     );
 
-    let buttons = ReactDOM.findDOMNode(group).children;
+    const buttons = ReactDOM.findDOMNode(group).children;
 
     TestUtils.Simulate.click(buttons[0]);
 

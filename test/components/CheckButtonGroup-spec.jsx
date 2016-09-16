@@ -6,19 +6,19 @@ import Button from 'components/Button';
 import CheckButtonGroup from 'components/CheckButtonGroup.jsx';
 
 function isButtonActive(button) {
-  return button.classList.contains('reui-button--active')
+  return button.classList.contains('reui-button--active');
 }
 
 describe('CheckButtonGroup', () => {
   it('activates buttons on click', () => {
-    let group = TestUtils.renderIntoDocument(
+    const group = TestUtils.renderIntoDocument(
       <CheckButtonGroup>
         <Button title="1" />
         <Button title="2" />
       </CheckButtonGroup>
     );
 
-    let buttons = ReactDOM.findDOMNode(group).children;
+    const buttons = ReactDOM.findDOMNode(group).children;
 
     TestUtils.Simulate.click(buttons[0]);
     TestUtils.Simulate.click(buttons[1]);

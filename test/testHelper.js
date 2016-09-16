@@ -1,4 +1,4 @@
-import chai from 'chai';
+import chai from 'chai'; // eslint-disable-line no-unused-vars
 import jsdom from 'jsdom';
 
 const doc = jsdom.jsdom('<!doctype html><html><body></body></html>');

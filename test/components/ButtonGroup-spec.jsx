@@ -7,14 +7,14 @@ import ButtonGroup from 'components/ButtonGroup.jsx';
 
 describe('ButtonGroup', () => {
   it('renders children', () => {
-    let group = TestUtils.renderIntoDocument(
+    const group = TestUtils.renderIntoDocument(
       <ButtonGroup>
         <Button id="button-1" title="1" />
         <Button id="button-2" title="2" />
       </ButtonGroup>
     );
 
-    let buttons = TestUtils.scryRenderedDOMComponentsWithTag(group, 'button');
+    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(group, 'button');
 
     expect(buttons).to.have.length(2);
   });

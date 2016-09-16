@@ -6,11 +6,11 @@ import TextInput from 'components/TextInput';
 
 describe('TextInput', () => {
   it('renders textarea when props.type = "textarea"', () => {
-    var input = TestUtils.renderIntoDocument(
-      <TextInput type="textarea" />
+    const input = TestUtils.renderIntoDocument(
+      <TextInput textarea />
     );
 
-    var element = ReactDOM.findDOMNode(input);
+    const element = ReactDOM.findDOMNode(input);
     expect(element.tagName).to.be.eq('TEXTAREA');
   });
 });

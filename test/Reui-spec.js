@@ -12,14 +12,14 @@ describe('Reui', () => {
     });
 
     it('sets specified themes', () => {
-      let theme = {
+      const theme = {
         button: 'testButton',
         buttonActive: 'testButtonActive',
-        buttonDisabled: 'testButtonDisabled'
+        buttonDisabled: 'testButtonDisabled',
       };
 
       Reui.setGlobalTheme({
-        Button: theme
+        Button: theme,
       });
 
       expect(Reui.Button.defaultTheme).to.deep.equal(theme);

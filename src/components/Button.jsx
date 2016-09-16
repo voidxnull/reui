@@ -29,16 +29,15 @@ export default class Button extends React.Component {
   };
 
   selectTheme(theme) {
-    const size = this.selectThemeIdBySize();
-    const color = this.selectThemeIdByColor();
+    let modifier;
 
     if (this.props.disabled) {
-      return theme(1, 'button', 'buttonDisabled', size, color);
+      modifier = 'buttonDisabled';
     } else if (this.props.active) {
-      return theme(1, 'button', 'buttonActive', size, color);
+      modifier = 'buttonActive';
     }
 
-    return theme(1, 'button', size, color);
+    return theme(1, 'button', modifier);
   }
 
   render() {
