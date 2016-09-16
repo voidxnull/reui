@@ -9,7 +9,8 @@
     "dev": "webpack-dev-server",
     "test": "NODE_PATH=$NODE_PATH:src mocha --compilers js:babel-register --require ./test/testHelper.js --recursive 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch",
-    "lint": "eslint *.js *.jsx src/"
+    "lint": "eslint *.js *.jsx src/",
+    "travis": "npm run lint && npm build && npm test"
   },
   "dependencies": {
     "react-themeable": "^1.1.0"

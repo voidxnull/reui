@@ -1,5 +1,6 @@
-
 # Reui
+[![Build Status](https://travis-ci.org/voidxnull/reui.svg?branch=master)](https://travis-ci.org/voidxnull/reui)
+
 A collection of themeable React components.
 
 ### WARNING
