@@ -16,10 +16,7 @@ npm install --save reui
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
-// Import the compiled version
 import Reui from 'reui';
-// or es6 version
-import Reui from 'reui/es6';
 
 // Requires Webpack
 import defaultTheme from 'reui/theme';
@@ -34,6 +31,7 @@ ReactDOM.render(
 );
 
 ```
+
 
 ## Creating and applying themes
 Reui uses react-themeable under the hood so you can use jss, Radium, React Style, css-modules or plain classes to describe your theme.
