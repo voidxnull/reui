@@ -5,25 +5,30 @@ export default class ProgressBar extends React.Component {
   static propTypes = {
     value: React.PropTypes.number.isRequired,
     of: React.PropTypes.number,
-    showCaption: React.PropTypes.bool
+    showCaption: React.PropTypes.bool,
   };
 
   static defaultProps = {
     value: 0,
     of: 100,
-    showCaption: false
+    showCaption: false,
   };
 
   static defaultTheme = {
     progressBarContainer: 'reui-progress',
     progressBar: 'reui-progress__bar',
-    progressBarCaption: 'reui-progress__caption'
+    progressBarCaption: 'reui-progress__caption',
   };
+
+
+  calculatePercent() {
+    return (this.props.value / this.props.of) * 100;
+  }
 
   render() {
     const theme = getTheme(this);
     const style = {
-      width: `${this._calculatePercent()}%`
+      width: `${this.calculatePercent()}%`,
     };
 
     return (
@@ -36,9 +41,5 @@ export default class ProgressBar extends React.Component {
         <div {...theme(3, 'progressBar')} style={style} />
       </div>
     );
-  }
-
-  _calculatePercent() {
-    return this.props.value / this.props.of * 100;
   }
 }

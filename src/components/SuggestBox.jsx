@@ -6,46 +6,55 @@ import { getTheme, getRawTheme } from '../utils';
 class SuggestBoxWindow extends React.Component {
   static propTypes = {
     hidden: PropTypes.bool,
-    items: PropTypes.array,
+    items: PropTypes.arrayOf(PropTypes.any),
     onClick: PropTypes.func,
     onMouseEnter: PropTypes.func,
     renderItem: PropTypes.func.isRequired,
     selectedIndex: PropTypes.number,
-    theme: PropTypes.object
+    theme: PropTypes.shape({
+      suggestBoxWindow: PropTypes.string,
+      suggestBoxWindowLine: PropTypes.string,
+      suggestBoxWindowLineActive: PropTypes.string,
+    }),
   };
 
   static defaultProps = {
     items: [],
     hidden: true,
     selectedIndex: 0,
-    onClick: (item) => {},
-    onMouseEnter: (item) => {}
+    onClick: () => {},
+    onMouseEnter: () => {},
   };
 
   static defaultTheme = {
     suggestBoxWindow: 'reui-suggestbox__window',
     suggestBoxWindowLine: 'reui-suggestbox__window__line',
-    suggestBoxWindowLineActive: 'reui-suggestbox__window__line--active'
+    suggestBoxWindowLineActive: 'reui-suggestbox__window__line--active',
   };
 
-  _handleClick(item) {
+  handleClick(item) {
     this.props.onClick(item);
   }
 
-  _handleMouseEnter(item, index) {
+  handleMouseEnter(item, index) {
     this.props.onMouseEnter(item, index);
   }
 
-  _renderList() {
-    let theme = getTheme(this);
-    return this.props.items.map(function (item, index) {
-      let selected = index === this.props.selectedIndex;
+  renderList() {
+    const theme = getTheme(this);
+
+    return this.props.items.map((item, index) => {
+      const selected = index === this.props.selectedIndex;
+      const handleClick = this.handleClick.bind(this, item);
+      const handleMouseEnter = this.handleMouseEnter.bind(this, item, index);
 
       return (
-        <div onMouseDown={this._handleClick.bind(this, item)}
-             onMouseEnter={this._handleMouseEnter.bind(this, item, index)}
-             key={index}
-             {...theme(index, 'suggestBoxWindowLine', selected && 'suggestBoxWindowLineActive')} >
+        <div
+          onMouseDown={handleClick}
+          onMouseEnter={handleMouseEnter}
+          key={index}
+          {...theme(index, 'suggestBoxWindowLine', selected && 'suggestBoxWindowLineActive')}
+        >
           {this.props.renderItem(item)}
         </div>
       );
@@ -53,7 +62,7 @@ class SuggestBoxWindow extends React.Component {
   }
 
   render() {
-    let theme = getTheme(this);
+    const theme = getTheme(this);
 
     if (this.props.hidden) {
       return null;
@@ -61,7 +70,7 @@ class SuggestBoxWindow extends React.Component {
 
     return (
       <div {...theme(2, 'suggestBoxWindow')}>
-        {this._renderList()}
+        {this.renderList()}
       </div>
     );
   }
@@ -81,7 +90,7 @@ export default class SuggestBox extends React.Component {
     filter: PropTypes.func,
     maxResults: PropTypes.number,
     onSelect: PropTypes.func,
-    renderItem: PropTypes.func
+    renderItem: PropTypes.func,
   };
 
   static defaultProps = {
@@ -91,7 +100,7 @@ export default class SuggestBox extends React.Component {
     filter: () => [],
     maxResults: 10,
     onSelect: () => {},
-    renderItem: (item) => item
+    renderItem: item => item,
   };
 
   static defaultTheme = {
@@ -109,134 +118,139 @@ export default class SuggestBox extends React.Component {
       items: [],
       filteredItems: [],
       selectedIndex: 0,
-      windowHidden: true
+      windowHidden: true,
     };
+  }
+
+  filterItems(items, query) {
+    return this.props.filter(items, query)
+      .slice(0, this.props.maxResults);
   }
 
   /**
    * Called on focus and change of the input
    */
-  _activate() {
-    let query = this.input.value;
-    let items = this.state.items;
+  activate() {
+    const query = this.input.value;
+    const items = this.state.items;
 
     if (items && items.length) {
       // Set query and filteredItems;
       // reset the item selection;
       this.setState({
-        query: query,
-        filteredItems: this._filter(items, query),
-        selectedIndex: 0
+        filteredItems: this.filterItems(items, query),
+        selectedIndex: 0,
+        query,
       });
     }
 
-    this.props.fetch(query, this._handleFetchCallback.bind(this));
+    this.props.fetch(query, this.handleFetchCallback);
   }
+
+
 
   /**
    * Shows the window and sends a request
    */
-  _handleFocus(event) {
+  handleFocus = (event) => {
     if (this.props.activateOnFocus) {
-      this.setState({windowHidden: false});
-      this._activate(event)
+      this.setState({ windowHidden: false });
+      this.activate(event);
     }
   }
 
-  _handleBlur(event) {
-    this.setState({windowHidden: true});
+  handleBlur = () => {
+    this.setState({ windowHidden: true });
   }
 
   /**
    * Handle a press on up, down and enter
    */
-  _handleKeyPress(event) {
-    let code = event.keyCode;
+  handleKeyPress = (event) => {
+    const code = event.keyCode;
     let selectedIndex = this.state.selectedIndex;
 
     if (code === 38) {
-
       // Move the selection up
       if (selectedIndex > 0) {
-        --selectedIndex;
+        selectedIndex -= 1;
       }
-      this.setState({selectedIndex: selectedIndex});
 
+      this.setState({ selectedIndex });
     } else if (code === 40) {
-
       // Move the selection down
       if (selectedIndex < this.state.filteredItems.length - 1) {
-        ++selectedIndex;
+        selectedIndex += 1;
       }
-      this.setState({selectedIndex: selectedIndex});
 
+      this.setState({ selectedIndex });
     } else if (code === 13) {
-
       // Apply (_select) the selection
-      this._select(this.state.filteredItems[this.state.selectedIndex]);
+      this.handleSelect(this.state.filteredItems[this.state.selectedIndex]);
     }
   }
 
   /**
-   * Call _activate after delay
+   * Call 'activate' after delay
    */
-  _handleChange(event) {
+  handleChange = () => {
     if (this.state.timer) {
       clearTimeout(this.state.timer);
     }
-    let timer = setTimeout(this._activate.bind(this), this.props.delay);
+
+    const timer = setTimeout(this.activate.bind(this), this.props.delay);
+
     this.setState({
-      timer: timer,
-      windowHidden: false
+      timer,
+      windowHidden: false,
     });
   }
 
   /**
    * Applies the item, calls the onSelect callback and hides the window
    */
-  _select(item) {
+  handleSelect = (item) => {
     this.input.value = this.props.renderItem(item);
     this.props.onSelect(item);
-    this.setState({windowHidden: true});
+    this.setState({ windowHidden: true });
   }
 
-  _handleFetchCallback(data) {
-    let filtered = this._filter(data, this.state.query);
+  handleFetchCallback = (data) => {
+    const filteredItems = this.filterItems(data, this.state.query);
 
-    this.setState({items: data, filteredItems: filtered});
+    this.setState({ items: data, filteredItems });
   }
 
-  _filter(items, query) {
-    return this.props.filter(items, query)
-      .slice(0, this.props.maxResults);
-  }
-
-  _handleMouseEnter(item, index) {
+  handleMouseEnter = (item, index) => {
     this.setState({
-      selectedIndex: index
+      selectedIndex: index,
     });
   }
 
   render() {
-    let rawTheme = getRawTheme(this);
-    let theme = getTheme(this);
+    const rawTheme = getRawTheme(this);
+    const theme = getTheme(this);
 
     return (
       <div {...theme(1, 'suggestBoxWrapper')}>
-        <TextInput ref={(c) => this.input = ReactDOM.findDOMNode(c)}
-                   onFocus={this._handleFocus.bind(this)}
-                   onBlur={this._handleBlur.bind(this)}
-                   onChange={this._handleChange.bind(this)}
-                   onKeyDown={this._handleKeyPress.bind(this)}
-                   aria-expanded={!this.state.windowHidden}
-                   theme={rawTheme} />
-        <SuggestBoxWindow items={this.state.filteredItems}
-                          hidden={this.state.windowHidden}
-                          selectedIndex={this.state.selectedIndex}
-                          onClick={this._select.bind(this)}
-                          onMouseEnter={this._handleMouseEnter.bind(this)}
-                          renderItem={this.props.renderItem}
-                          theme={rawTheme} />
+        <TextInput
+          ref={node => (this.input = node)}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+          onKeyDown={this.handleKeyPress}
+          aria-expanded={!this.state.windowHidden}
+          theme={rawTheme}
+        />
+        <SuggestBoxWindow
+          items={this.state.filteredItems}
+          hidden={this.state.windowHidden}
+          selectedIndex={this.state.selectedIndex}
+          onClick={this.handleSelect}
+          onMouseEnter={this.handleMouseEnter}
+          renderItem={this.props.renderItem}
+          theme={rawTheme}
+        />
       </div>
     );
   }

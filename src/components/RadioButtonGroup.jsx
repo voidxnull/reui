@@ -1,47 +1,53 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ButtonGroup from './ButtonGroup';
 import Button from './Button';
 
 // TODO: Implement theming
 export default class RadioButtonGroup extends React.Component {
   static propTypes = {
-    deselectable: React.PropTypes.bool,
-    onChange: React.PropTypes.func
+    children: PropTypes.node,
+    deselectable: PropTypes.bool,
+    theme: Button.theme,
+    onChange: PropTypes.func,
   };
 
   static defaultProps = {
     deselectable: false,
-    onChange: function () {}
+    onChange: () => {},
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      activeButton: 0
+      activeButton: 0,
     };
   }
 
-  render() {
-    return <ButtonGroup children={this._prepareChildren()}
-                        activeButtons={[this.state.activeButton]}
-                        theme={this.props.theme} />;
-  }
+  handleButtonClick(buttonId) {
+    const activeButton = (this.props.deselectable && buttonId === this.state.activeButton)
+                         ? null
+                         : buttonId;
 
-  _onButtonClick(buttonId) {
-    this.setState({
-      activeButton: (this.props.deselectable && n === this.state.active)
-                    ? null
-                    : buttonId
-    });
+    this.setState({ activeButton });
     this.props.onChange(buttonId);
   }
 
-  _prepareChildren() {
-    return React.Children.map(this.props.children, (child, i) => {
-      return React.cloneElement(child, {
-        onClick: () => this._onButtonClick(i)
-      });
-    });
+  prepareChildren() {
+    return React.Children.map(this.props.children, (child, i) =>
+      React.cloneElement(child, {
+        onClick: this.handleButtonClick.bind(this, i),
+      })
+    );
+  }
+
+  render() {
+    return (
+      <ButtonGroup
+        children={this.prepareChildren()}
+        activeButtons={[this.state.activeButton]}
+        theme={this.props.theme}
+      />
+    );
   }
 }

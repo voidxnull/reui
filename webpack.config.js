@@ -3,17 +3,17 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: [
-    './example/allComponents.jsx'
+    './example/allComponents.jsx',
   ],
 
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
   },
 
   output: {
     path: path.join(__dirname, 'example'),
     filename: 'exampleBundle.js',
-    pathinfo: true
+    pathinfo: true,
   },
 
   module: {
@@ -22,30 +22,25 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel',
-        query: {
-          cacheDirectory: true,
-          optional: ['runtime'],
-          stage: 0
-        }
       },
       {
         test: /\.css$/,
-        loader: "style!css?modules"
+        loader: 'style!css?modules',
       },
       {
         test: /\.scss$/,
-        loader: 'style!css?modules!sass'
+        loader: 'style!css?modules!sass',
       },
       {
-        test: /\.svg$/,
-        loader: 'file-loader'
-      }
-    ]
+        test: /\.(svg|png|jpg)$/,
+        loader: 'file-loader',
+      },
+    ],
   },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
   ],
 
   debug: true,
@@ -54,11 +49,11 @@ module.exports = {
     hot: true,
     inline: true,
     historyApiFallback: true,
-    stats: {colors: true},
+    stats: { colors: true },
     quiet: false,
     noInfo: false,
     publicPath: '/',
     contentBase: './example/',
-    port: 3000
-  }
+    port: 3000,
+  },
 };

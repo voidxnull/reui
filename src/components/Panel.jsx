@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { getTheme } from '../utils';
 
 export default class Panel extends React.Component {
   static propTypes = {
-    propTypes: React.PropTypes.string
+    propTypes: PropTypes.string,
   };
 
   static defaultProps = {
-    title: ''
+    title: '',
   };
 
   static defaultTheme = {
     panel: 'reui-panel',
     panelHeading: 'reui-panel__heading',
-    panelBody: 'reui-panel__body'
+    panelBody: 'reui-panel__body',
   };
 
   render() {

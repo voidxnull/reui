@@ -1,44 +1,44 @@
-import React from 'react';
-import assign from 'object-assign';
+import React, { PropTypes } from 'react';
 import { getRawTheme, getTheme } from '../utils';
 import Button from './Button';
 
 export default class ButtonGroup extends React.Component {
   static propTypes = {
-    activeButtons: React.PropTypes.arrayOf(React.PropTypes.number)
+    activeButtons: PropTypes.arrayOf(React.PropTypes.number),
+    children: PropTypes.node,
   };
 
   static defaultProps = {
-    activeButtons: []
+    activeButtons: [],
   };
 
   static defaultTheme = assign(Button.defaultTheme, {
-    buttonGroup: 'reui-button-group'
+    buttonGroup: 'reui-button-group',
     //button: '',
     //buttonDisabled: '',
     //buttonActive: ''
   });
+
+  prepareChildren() {
+    return React.Children.map(this.props.children, (child, i) =>
+      React.cloneElement(child, {
+        active: this.isButtonActive(i),
+        theme: getRawTheme(this),
+      })
+    );
+  }
+
+  isButtonActive(buttonId) {
+    return this.props.activeButtons.indexOf(buttonId) > -1;
+  }
 
   render() {
     const theme = getTheme(this);
 
     return (
       <div {...theme(1, 'buttonGroup')}>
-        {this._prepareChildren()}
+        {this.prepareChildren()}
       </div>
     );
-  }
-
-  _prepareChildren() {
-    return React.Children.map(this.props.children, (child, i) => {
-      return React.cloneElement(child, {
-        active: this._isButtonActive(i),
-        theme: getRawTheme(this)
-      });
-    });
-  }
-
-  _isButtonActive(buttonId) {
-    return this.props.activeButtons.indexOf(buttonId) > -1;
   }
 }

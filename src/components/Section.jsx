@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { getTheme, getRawTheme } from '../utils';
 import Header from './Header';
 
 export default class Section extends React.Component {
   static propTypes = {
-    level: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
-    title: React.PropTypes.string
+    level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
+    title: PropTypes.string,
+    children: PropTypes.node,
   };
 
   static defaultProps = {
     level: 1,
-    title: null
+    title: null,
   };
 
   static defaultTheme = {
     section: 'reui-section',
-    header: 'reui-section__header'
+    header: 'reui-section__header',
   };
 
   render() {

@@ -6,5 +6,5 @@ export default {
   ProgressBar: require('./ProgressBar.scss'),
   Section: require('./Section.scss'),
   TextInput: require('./TextInput.scss'),
-  SuggestBox: require('./SuggestBox.scss')
-}
+  SuggestBox: require('./SuggestBox.scss'),
+};

@@ -2,6 +2,19 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "rules": {
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": true, "peerDependencies": true}]
+    "import/no-extraneous-dependencies": [0],
+    "react/no-unused-prop-types": [0]
+  },
+  "env": {
+    "browser": true,
+    "mocha": true
+  },
+  "settings": {
+    "import/external-module-folders": ["src"],
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src"]
+      }
+    }
   }
 }

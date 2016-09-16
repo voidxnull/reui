@@ -8,7 +8,8 @@
     "prepublish": "npm run build",
     "dev": "webpack-dev-server",
     "test": "NODE_PATH=$NODE_PATH:src mocha --compilers js:babel-register --require ./test/testHelper.js --recursive 'test/**/*.@(js|jsx)'",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "lint": "eslint *.js *.jsx src/"
   },
   "dependencies": {
     "object-assign": "^4.1.0",
